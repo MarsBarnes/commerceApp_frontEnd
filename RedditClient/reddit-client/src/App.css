@@ -1,39 +1,40 @@
-.App {
-  text-align: center;
+/* COLOR PALETTE:
+Black: #0E0B16
+White: #E7DFDD
+Blue: #4717F6
+Fuschia: #A239CA 
+*/
+/* INTER FONT WEIGHTS:
+Thin 100
+Regular 400
+Bold 700 */
+
+/* GLOBAL STYLES */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0e0b16;
+  color: #e7dfdd;
+  font-weight: 400;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* RESPONSIVITY */
+
+/* MOBILE */
+@media only screen and (max-width: 767px) {
+  body {
+  background-color: #4717F6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
 }
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+  background-color: #A239CA ;
 }
-
-.App-link {
-  color: rgb(112, 76, 182);
 }
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+/* DESKTOP */
+@media (min-width: 1024px) {
+  body {
+  background-color: #0E0B16;
+}
 }
