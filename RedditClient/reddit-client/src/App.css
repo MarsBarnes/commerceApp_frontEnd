@@ -10,11 +10,67 @@ Regular 400
 Bold 700 */
 
 /* GLOBAL STYLES */
+.App {
+  display: grid;
+  justify-items: center;
+}
 body {
   font-family: 'Inter', sans-serif;
   background-color: #0e0b16;
   color: #e7dfdd;
   font-weight: 400;
+}
+
+img {
+  width: 300px;
+}
+
+.tile {
+  background-color: rgb(9, 52, 52);
+  width: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "upArrow title title title title title"
+    "tileVotes pic pic pic pic pic"
+    "downArrow pic pic pic pic pic"
+    ". pic pic pic pic pic"
+    ". pic pic pic pic pic"
+    ". footer footer footer footer comment"
+  ;
+}
+
+.tileTitle {
+  grid-area: title;
+}
+
+.tileImage {
+  grid-area: pic;
+  width: 95%;
+}
+.tileFooter {
+  grid-area: footer;
+  align-self:center;
+}
+.tileComment {
+  grid-area: comment;
+  text-align: center;
+  align-self:center;
+}
+.tileArrowUp {
+  grid-area: upArrow;
+  text-align: center;
+  align-self:center;
+}
+.tileArrowDown {
+  grid-area: downArrow;
+  text-align: center;
+}
+
+.tileVotes {
+  grid-area: tileVotes;
+  text-align: center;
 }
 
 /* RESPONSIVITY */
@@ -38,3 +94,4 @@ body {
   background-color: #0E0B16;
 }
 }
+
