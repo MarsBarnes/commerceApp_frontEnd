@@ -1,10 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-import { slice, search, selectLoading } from "./slice";
+import {
+  slice,
+  search,
+  selectSearchText,
+  selectLoading,
+  fetchData
+} from "./slice";
+import React from "react";
 
 export const SearchAndFilter = () => {
-
+    const {searchText} = useSelector(selectSearchText)
     const dispatch = useDispatch()
+    const [textInput, setTextInput] = React.useState("");
 
+    const handleKeyDown= (event) => {
+        if(event.key === "Enter"){
+            dispatch(search(textInput));
+            dispatch(fetchData());}
+    }
 
   return (
     <div className="searchAndFilterFlex">
@@ -12,14 +25,18 @@ export const SearchAndFilter = () => {
       <input
         className="searchBar"
         type="text"
-        id="searchText"
-        name="searchText"
+        id="textInput"
+        name="textInput"
         placeholder="Search"
+        onChange={(e) => setTextInput(e.target.value)}
+        onKeyDown={(event) => handleKeyDown(event)}
+        value={textInput}
       ></input>
       <button
         type="button"
-        onClick={() => {
-          dispatch(slice.search);
+        onClick={(e) => {
+          dispatch(search(textInput));
+          dispatch(fetchData());
         }}
       >
         <span className="material-symbols-outlined searchAndFilter search searchAndFilterIcons">

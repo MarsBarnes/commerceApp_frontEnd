@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+import { store } from '../app/store';
+
 const initialState = {
   searchText: "art",
   currentFilters: [],
@@ -7,10 +9,11 @@ const initialState = {
   tileData: [],
 };
 
+
 export const fetchData = createAsyncThunk(
   "slice/fetchBySearchQuery",
   async (anUnusedVariable, thunkAPI) => {
-    console.log("yeeyee");
+    // console.log("yeeyee");
     const res = await fetch(`https://www.reddit.com/r/${thunkAPI.getState().searchText}.json`);
     console.log(thunkAPI.getState());
     if (res.ok) {
@@ -26,10 +29,11 @@ export const slice = createSlice({
   initialState,
   reducers: {
     search: (state, action) => {
-      // slice.searchText = action.payload
+      console.log(action.payload)
+      state.searchText = action.payload
       console.log('search action reached')
-      console.log(action);
-      console.log(state.searchText);
+      // console.log(action);
+      // console.log(state.searchText);
     },
     addFilter: (state, action) => {},
     removeFilter: (state, action) => {},
@@ -43,8 +47,8 @@ export const slice = createSlice({
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.loading = false;
-        console.log(action);
-        state.tileData = action.payload;
+        // console.log(action);
+        state.tileData = action.payload.data.children;
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.loading = false;
@@ -57,6 +61,8 @@ export const slice = createSlice({
 export default slice;
 
 export const selectLoading = (state) => state.loading;
+export const selectSearchText = (state) => state.searchText;
+export const selectTileData = (state) => state.tileData
 
 export const { search } = slice.actions;
 

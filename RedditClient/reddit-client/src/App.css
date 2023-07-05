@@ -46,6 +46,7 @@ button {
   grid-area: search;
   text-align:right;
   padding: 5px;
+  
 }
 .searchBar{
   align-self: center;
@@ -70,7 +71,7 @@ img {
 }
 
 .tile {
-  background-color: rgb(9, 52, 52);
+  background-color: #0d042b;
   width: 500px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -101,15 +102,18 @@ img {
   grid-area: comment;
   text-align: center;
   align-self:center;
+  color: #A239CA 
 }
 .tileArrowUp {
   grid-area: upArrow;
   text-align: center;
   align-self:center;
+  color: #A239CA 
 }
 .tileArrowDown {
   grid-area: downArrow;
   text-align: center;
+  color: #A239CA 
 }
 
 .tileVotes {
@@ -122,14 +126,14 @@ img {
 /* MOBILE */
 @media only screen and (max-width: 767px) {
   body {
-  background-color: #4717F6;
+  background-color: #0E0B16;
 }
 
 }
 /* TABLET */
 @media (min-width: 768px) and (max-width: 1023px) {
   body {
-  background-color: #21042c ;
+  background-color: #0E0B16 ;
 }
 }
 /* DESKTOP */
