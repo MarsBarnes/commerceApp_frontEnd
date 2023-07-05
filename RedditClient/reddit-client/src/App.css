@@ -20,6 +20,50 @@ body {
   color: #e7dfdd;
   font-weight: 400;
 }
+button {
+  background-color: transparent;
+  border: none;
+  color: #E7DFDD;
+}
+
+/* SEARCH AND FILTER STYLES */
+
+.searchAndFilterFlex{ 
+  display: grid;
+  grid-template-columns: 10fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "header header header searchBar search filter";
+  width: 500px;
+  height: 100px;
+  background-color: #4717F6
+}
+.searchAndFilterHeader{
+  grid-area: header;
+  padding: 5px;
+}
+
+.search{
+  align-self: center;
+  grid-area: search;
+  text-align:right;
+  padding: 5px;
+}
+.searchBar{
+  align-self: center;
+  grid-area: searchBar;
+  text-align:right;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.filter{
+  align-self: center;
+  grid-area: filter;
+  text-align:right;
+  padding: 5px;
+}
+
+
+/* TILE STYLES */
 
 img {
   width: 300px;
@@ -85,7 +129,7 @@ img {
 /* TABLET */
 @media (min-width: 768px) and (max-width: 1023px) {
   body {
-  background-color: #A239CA ;
+  background-color: #21042c ;
 }
 }
 /* DESKTOP */

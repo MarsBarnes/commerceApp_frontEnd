@@ -5,3 +5,4 @@ import slice from '../components/slice'
 export const store = configureStore({
   reducer: slice.reducer
 });
+
