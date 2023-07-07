@@ -15,7 +15,7 @@ Bold 700 */
   justify-items: center;
 }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #0e0b16;
   color: #e7dfdd;
   font-weight: 400;
@@ -23,46 +23,47 @@ body {
 button {
   background-color: transparent;
   border: none;
-  color: #E7DFDD;
+  color: #e7dfdd;
 }
 
 /* SEARCH AND FILTER STYLES */
 
-.searchAndFilterFlex{ 
+.searchAndFilterFlex {
   display: grid;
   grid-template-columns: 10fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas: "header header header searchBar search filter";
   width: 500px;
   height: 100px;
-  background-color: #4717F6
+  background-color: #4717f6;
+  border-bottom: #a239ca;
+  border-width: 5px;
+  border-style: none none solid none;
 }
-.searchAndFilterHeader{
+.searchAndFilterHeader {
   grid-area: header;
   padding: 5px;
 }
 
-.search{
+.search {
   align-self: center;
   grid-area: search;
-  text-align:right;
+  text-align: right;
   padding: 5px;
-  
 }
-.searchBar{
+.searchBar {
   align-self: center;
   grid-area: searchBar;
-  text-align:right;
+  text-align: right;
   padding: 5px;
   border-radius: 5px;
 }
 
-.filter{
+.filter {
   align-self: center;
   grid-area: filter;
-  text-align:right;
+  text-align: right;
   padding: 5px;
 }
-
 
 /* TILE STYLES */
 
@@ -75,15 +76,15 @@ img {
   width: 500px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: 
-    "upArrow title title title title title"
+  grid-template-rows: 1fr auto auto auto auto 1fr;
+  grid-template-areas:
+    "tileVotes title title title title title"
     "tileVotes pic pic pic pic pic"
-    "downArrow pic pic pic pic pic"
+    ". pic pic pic pic pic"
     ". pic pic pic pic pic"
     ". pic pic pic pic pic"
     ". footer footer footer footer comment"
-  ;
+    ". commentData commentData commentData commentData commentData";
 }
 
 .tileTitle {
@@ -96,29 +97,36 @@ img {
 }
 .tileFooter {
   grid-area: footer;
-  align-self:center;
+  align-self: center;
 }
 .tileComment {
   grid-area: comment;
   text-align: center;
-  align-self:center;
-  color: #A239CA 
+  align-self: center;
+  color: #a239ca;
 }
 .tileArrowUp {
-  grid-area: upArrow;
+  grid-area: tileVotes;
   text-align: center;
-  align-self:center;
-  color: #A239CA 
+  padding-top: 10px;
+  color: #a239ca;
 }
 .tileArrowDown {
-  grid-area: downArrow;
+  grid-area: tileVotes;
   text-align: center;
-  color: #A239CA 
+  color: #a239ca;
+  padding-top: 80px;
 }
 
 .tileVotes {
   grid-area: tileVotes;
   text-align: center;
+  padding-top: 30px;
+}
+
+.tileCommentData {
+  grid-area: commentData;
+  background-color: #4717f6;
 }
 
 /* RESPONSIVITY */
@@ -126,20 +134,18 @@ img {
 /* MOBILE */
 @media only screen and (max-width: 767px) {
   body {
-  background-color: #0E0B16;
-}
-
+    background-color: #0e0b16;
+  }
 }
 /* TABLET */
 @media (min-width: 768px) and (max-width: 1023px) {
   body {
-  background-color: #0E0B16 ;
-}
+    background-color: #0e0b16;
+  }
 }
 /* DESKTOP */
 @media (min-width: 1024px) {
   body {
-  background-color: #0E0B16;
+    background-color: #0e0b16;
+  }
 }
-}
-
