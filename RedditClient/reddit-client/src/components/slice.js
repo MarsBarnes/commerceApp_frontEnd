@@ -78,7 +78,7 @@ export const slice = createSlice({
       .addCase(fetchData.rejected, (state, action) => {
         state.loading = false;
         console.log(action);
-        state.tileData = action.payload;
+        state.tileData = [];
       })
       .addCase(fetchComments.pending, (state) => {
         state.loadingComments = true;
@@ -100,7 +100,7 @@ export const slice = createSlice({
       })
       .addCase(fetchComments.rejected, (state, action) => {
         state.loadingComments = false;
-        state.commentData = action.payload;
+        state.commentData = {};
       });
   },
 });

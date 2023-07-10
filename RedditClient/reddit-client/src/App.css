@@ -67,9 +67,9 @@ button {
 
 /* TILE STYLES */
 
-img {
+/* img {
   width: 300px;
-}
+} */
 
 .tile {
   background-color: #0d042b;
@@ -128,6 +128,38 @@ img {
   grid-area: commentData;
   background-color: #4717f6;
 }
+
+.tileNSFW {
+  grid-area: pic;
+  background-color: #4717f6;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a:link {
+  color: none;
+  text-decoration: none;
+  background-color: none;
+}
+a:visited {
+  color: none;
+  text-decoration: none;
+  background-color: none;
+}
+a:hover {
+  color: none;
+  text-decoration: none;
+  background-color: none;
+}
+a:active {
+  color: none;
+  text-decoration: none;
+  background-color: none;
+}
+
+
+
 
 /* RESPONSIVITY */
 

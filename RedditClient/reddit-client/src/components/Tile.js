@@ -20,17 +20,51 @@ export const Tile = () => {
       : `${Math.floor(hoursDifference / 24)} days`;
   };
 
+  const pickImg = (i) => {
+    if (i.data.is_video) {
+      return (
+        <video
+          controls
+          className="tileImage"
+          alt="Reddit does not have altText."
+          width="300"
+        >
+          <source src={i.data.secure_media.reddit_video.fallback_url} />
+          ...
+        </video>
+      );
+    }
+    if (i.data.is_self) {
+      return <p className="tileImage">{i.data.selftext}</p>;
+    }
+    if (i.data.thumbnail === "nsfw") {
+      return (
+        <button className="tileNSFW">
+          <span class="material-symbols-outlined">warning</span> NSFW
+        </button>
+      );
+    }
+    if (i.data.thumbnail) {
+      return (
+        <img
+          className="tileImage"
+          src={i.data.thumbnail}
+          alt="Reddit does not have altText."
+        />
+      );
+    } else {
+      return <p>this is a text post</p>;
+    }
+  };
+
   return (
     <>
       {tileData.map((i, index) => (
         <div className="tile" key={index}>
           <h2 className="tileTitle">{loading ? "..." : i.data.title}</h2>
-          <img
-            className="tileImage"
-            src={i.data.url}
-            alt="alt text here"
-            onClick={() => window.open(i.data.url, "_blank")}
-          />
+          <a href={i.data.url} target="_blank">
+            {pickImg(i)}
+          </a>
           <p className="tileFooter">
             Posted By {i.data.author} {makeDate(i.data.created)} ago
           </p>
@@ -54,9 +88,9 @@ export const Tile = () => {
             </span>
           </button>
           <section className="tileCommentData">
-            {commentData[i.data.id]
+            {commentData?.[i.data.id]
               ? commentData[i.data.id].map((comment, index) => (
-                  <p>{comment.data}</p>
+                  <p key={index}>{comment.data}</p>
                 ))
               : undefined}
           </section>
