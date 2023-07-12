@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 // import { Counter } from './features/counter/Counter';
-import './App.css';
-import {Tile} from './components/Tile'
-import { SearchAndFilter } from './components/SearchAndFilter';
+import "./App.css";
+import { Feed } from "./components/Feed";
+import { SearchAndFilter } from "./components/SearchAndFilter";
 
 function App() {
   return (
     <div className="App">
-      <SearchAndFilter/>
-      <Tile />
-      
+      <SearchAndFilter />
+      <Feed />
+
       {/* <Tile /> */}
       {/* <GetData></GetData> */}
       {/* <footer>
@@ -20,7 +20,6 @@ function App() {
 }
 
 export default App;
-
 
 // copy and paste the following to use the icons
 

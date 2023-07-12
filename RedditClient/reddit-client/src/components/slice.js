@@ -9,6 +9,9 @@ const initialState = {
   tileData: [],
   commentData: {},
   loadingComments: true,
+  commentsOn: [],
+  slideWidth: 0,
+  slidesContainerScrollLeft: 0,
 };
 
 export const fetchData = createAsyncThunk(
@@ -60,10 +63,34 @@ export const slice = createSlice({
       // console.log(action);
       // console.log(state.searchText);
     },
+    setCommentsOn: (state, action) => {
+      // if (state.commentsOn === true) {
+      //   state.commentsOn = false;
+      // } else {
+      //   state.commentsOn = true;
+      // }
+
+      
+      // if (state.commentsOn[action.payload].display) {
+      //   state.commentsOn[action.payload].display =
+      //     !state.commentsOn[action.payload].display;
+      // } else {
+      //   state.commentsOn[action.payload].display = true;
+      // }
+
+      console.log(state.commentsOn);
+    },
     addFilter: (state, action) => {},
     removeFilter: (state, action) => {},
-    maximize: (state, action) => {},
-    minimize: (state, action) => {},
+    setSlideWidth: (state, action) => {
+      state.slideWidth = action.payload;
+    },
+    nextSlide: (state) => {
+      state.slidesContainerScrollLeft += state.slideWidth;
+    },
+    prevSlide: (state) => {
+      state.slidesContainerScrollLeft -= state.slideWidth;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -111,5 +138,7 @@ export const selectLoading = (state) => state.loading;
 export const selectSearchText = (state) => state.searchText;
 export const selectTileData = (state) => state.tileData;
 export const selectCommentData = (state) => state.commentData;
+export const { setSlideWidth, nextSlide, prevSlide } = slice.actions;
+export const selectCommentsOn = (state) => slice.actions.setCommentsOn;
 
 export const { search } = slice.actions;
