@@ -6,12 +6,17 @@ const initialState = {
   searchText: "art",
   currentFilters: [],
   loading: true,
-  tileData: [],
+  filteredPostData: [],
+  postData: [],
   commentData: {},
   loadingComments: true,
-  commentsOn: [],
   slideWidth: 0,
   slidesContainerScrollLeft: 0,
+  videoChecked: false,
+  articleChecked: false,
+  textChecked: false,
+  imageChecked: false,
+  nsfwChecked: false,
 };
 
 export const fetchData = createAsyncThunk(
@@ -33,12 +38,12 @@ export const fetchData = createAsyncThunk(
 export const fetchComments = createAsyncThunk(
   "slice/fecthComments",
   async (i, thunkAPI) => {
-    const article = thunkAPI.getState().tileData[i];
+    const article = thunkAPI.getState().postData[i];
     console.log(`fetch comments article: ${article.data.id}`);
     const res = await fetch(
       // get article title
       // `https://api.reddit.com/r/${thunkAPI.getState().searchText}/comments/${
-      //   thunkAPI.getState().tileData[i].data.id
+      //   thunkAPI.getState().postData[i].data.id
       // }`
       `https://www.reddit.com${article.data.permalink.replace(/\/$/, "")}.json`
     );
@@ -63,25 +68,6 @@ export const slice = createSlice({
       // console.log(action);
       // console.log(state.searchText);
     },
-    setCommentsOn: (state, action) => {
-      // if (state.commentsOn === true) {
-      //   state.commentsOn = false;
-      // } else {
-      //   state.commentsOn = true;
-      // }
-
-      
-      // if (state.commentsOn[action.payload].display) {
-      //   state.commentsOn[action.payload].display =
-      //     !state.commentsOn[action.payload].display;
-      // } else {
-      //   state.commentsOn[action.payload].display = true;
-      // }
-
-      console.log(state.commentsOn);
-    },
-    addFilter: (state, action) => {},
-    removeFilter: (state, action) => {},
     setSlideWidth: (state, action) => {
       state.slideWidth = action.payload;
     },
@@ -90,6 +76,56 @@ export const slice = createSlice({
     },
     prevSlide: (state) => {
       state.slidesContainerScrollLeft -= state.slideWidth;
+    },
+    setVideoChecked: (state) => {
+      state.videoChecked = state.videoChecked ? false : true;
+      console.log(state.videoChecked);
+    },
+    setTextChecked: (state) => {
+      state.textChecked = state.textChecked ? false : true;
+      console.log(state.textChecked);
+    },
+    setArticleChecked: (state) => {
+      state.articleChecked = state.articleChecked ? false : true;
+      console.log(state.articleChecked);
+    },
+    setImageChecked: (state) => {
+      state.imageChecked = state.imageChecked ? false : true;
+      console.log(state.imageChecked);
+    },
+    setNsfwChecked: (state) => {
+      state.nsfwChecked = state.nsfwChecked ? false : true;
+      console.log(state.nsfwChecked);
+    },
+    filter: (state) => {
+      state.filteredPostData = state.postData.filter((i, index) => {
+        if (
+          state.videoChecked == false &&
+          state.articleChecked == false &&
+          state.nsfwChecked == false &&
+          state.imageChecked == false &&
+          state.textChecked == false
+        ) {
+          return true;
+        }
+        if (state.videoChecked == true && i.data.is_video == true) {
+          return true;
+        }
+        if (state.articleChecked == true && i.data.post_hint == "link") {
+          return true;
+        }
+        if (state.nsfwChecked == true && i.data.thumbnail == "nsfw") {
+          return true;
+        }
+        if (state.imageChecked == true && (i.data.is_gallery == true || i.data.post_hint == "image")) {
+          return true;
+        }
+        if (state.textChecked == true && i.data.is_self == true) {
+          return true;
+        } else {
+          return false;
+        }
+      });
     },
   },
   extraReducers: (builder) => {
@@ -100,12 +136,13 @@ export const slice = createSlice({
       .addCase(fetchData.fulfilled, (state, action) => {
         state.loading = false;
         // console.log(action);
-        state.tileData = action.payload.data.children;
+        state.postData = action.payload.data.children;
+        state.filteredPostData = action.payload.data.children;
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.loading = false;
         console.log(action);
-        state.tileData = [];
+        state.postData = [];
       })
       .addCase(fetchComments.pending, (state) => {
         state.loadingComments = true;
@@ -136,9 +173,14 @@ export default slice;
 
 export const selectLoading = (state) => state.loading;
 export const selectSearchText = (state) => state.searchText;
-export const selectTileData = (state) => state.tileData;
+export const selectPostData = (state) => state.postData;
 export const selectCommentData = (state) => state.commentData;
 export const { setSlideWidth, nextSlide, prevSlide } = slice.actions;
-export const selectCommentsOn = (state) => slice.actions.setCommentsOn;
-
+export const selectVideoChecked = (state) => slice.actions.setVideoChecked;
+export const selectArticleChecked = (state) => slice.actions.setArticleChecked;
+export const selectTextChecked = (state) => slice.actions.setTextChecked;
+export const selectNsfwChecked = (state) => slice.actions.setNsfwChecked;
+export const selectImageChecked = (state) => slice.actions.setImageChecked;
+export const selectFilter = (state) => slice.actions.filter;
+export const selectFilteredPostData = (state) => state.filteredPostData;
 export const { search } = slice.actions;

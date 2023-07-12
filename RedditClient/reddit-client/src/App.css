@@ -36,14 +36,24 @@ img {
 .searchAndFilterFlex {
   display: grid;
   grid-template-columns: 10fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-areas: "header header header searchBar search filter";
+  grid-template-rows: 1fr 40px;
+  grid-template-areas:
+    "header header header searchBar search filterIcon"
+    "filter filter filter filter filter filter";
   width: 500px;
-  height: 100px;
+  /* height: 100px; */
   background-color: #4717f6;
   border-bottom: #a239ca;
   border-width: 5px;
   border-style: none none solid none;
 }
+
+.searchAndFilterOff {
+  grid-template-rows: 1fr 0px;
+}
+
+
+
 .searchAndFilterHeader {
   grid-area: header;
   padding: 5px;
@@ -63,11 +73,19 @@ img {
   border-radius: 5px;
 }
 
-.filter {
+.filterIcon {
   align-self: center;
-  grid-area: filter;
+  grid-area: filterIcon;
   text-align: right;
   padding: 5px;
+}
+
+.filter {
+  grid-area: filter;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
 }
 
 /* TILE STYLES */

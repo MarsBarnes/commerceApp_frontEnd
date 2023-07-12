@@ -1,18 +1,16 @@
 import { useSelector } from "react-redux";
-import {Post} from "./Post"
-import {
-  selectTileData,
-} from "./slice";
+import { Post } from "./Post";
+import { selectPostData, selectFilteredPostData } from "./slice";
 
 export const Feed = () => {
-  const tileData = useSelector(selectTileData);
+  const postData = useSelector(selectPostData);
+  const filteredPostData = useSelector(selectFilteredPostData);
 
   return (
     <>
-      {tileData.map((i, index) => (
+      {filteredPostData?.map((i, index) => (
         <Post i={i} index={index} />
       ))}
     </>
-
   );
 };
