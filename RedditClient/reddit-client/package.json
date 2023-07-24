@@ -36,5 +36,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "##Description Reddit Basic is a simple app to view subreddits from. This app allows users to view an uncluttered streamlined version of reddit.",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
