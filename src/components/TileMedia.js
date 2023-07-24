@@ -23,7 +23,7 @@ export const TileMedia = ({ i }) => {
   if (i.data.thumbnail === "nsfw") {
     return (
       <button className="tileNSFW">
-        <a href={i.data.url} target="_blank">
+        <a href={i.data.url} target="_blank" rel="noreferrer">
           <span className="material-symbols-outlined">warning</span> NSFW
         </a>
       </button>

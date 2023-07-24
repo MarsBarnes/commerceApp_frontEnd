@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  slice,
   search,
-  selectSearchText,
-  selectLoading,
   fetchData,
   fetchComments,
   selectVideoChecked,
@@ -16,7 +13,6 @@ import {
 import React from "react";
 
 export const SearchAndFilter = () => {
-  const { searchText } = useSelector(selectSearchText);
   const videoChecked = useSelector(selectVideoChecked);
   const articleChecked = useSelector(selectArticleChecked);
   const imageChecked = useSelector(selectImageChecked);
@@ -52,7 +48,7 @@ export const SearchAndFilter = () => {
       ></input>
       <button
         type="button"
-        onClick={(e) => {
+        onClick={() => {
           dispatch(search(textInput));
           dispatch(fetchData());
           dispatch(fetchComments());
@@ -64,7 +60,7 @@ export const SearchAndFilter = () => {
       </button>
       <button
         type="button"
-        onClick={(e) => {
+        onClick={() => {
           // dispatch(filter());
           filterOn ? setFilterOn(false) : setFilterOn(true);
         }}
@@ -81,7 +77,7 @@ export const SearchAndFilter = () => {
               id="video"
               name="video"
               value="video"
-              onChange={(e) => {
+              onChange={() => {
                 dispatch(videoChecked());
                 dispatch(filter());
               }}
@@ -94,7 +90,7 @@ export const SearchAndFilter = () => {
               id="text"
               name="text"
               value="text"
-              onChange={(e) => {
+              onChange={() => {
                 dispatch(textChecked());
                 dispatch(filter());
               }}
@@ -107,7 +103,7 @@ export const SearchAndFilter = () => {
               id="image"
               name="image"
               value="image"
-              onChange={(e) => {
+              onChange={() => {
                 dispatch(imageChecked());
                 dispatch(filter());
               }}
@@ -120,7 +116,7 @@ export const SearchAndFilter = () => {
               id="article"
               name="article"
               value="article"
-              onChange={(e) => {
+              onChange={() => {
                 dispatch(articleChecked());
                 dispatch(filter());
               }}
@@ -133,7 +129,7 @@ export const SearchAndFilter = () => {
               id="nsfw"
               name="nsfw"
               value="nsfw"
-              onChange={(e) => {
+              onChange={() => {
                 dispatch(nsfwChecked());
                 dispatch(filter());
               }}

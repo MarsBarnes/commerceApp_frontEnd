@@ -24,7 +24,7 @@ export const Post = ({ i, index }) => {
   return (
     <div className="tile" key={i.data.id}>
       <h2 className="tileTitle">
-        <a href={i.data.url} target="_blank">
+        <a href={i.data.url} target="_blank" rel="noreferrer" >
           {loading ? "..." : i.data.title}
         </a>
       </h2>

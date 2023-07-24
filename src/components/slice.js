@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { store } from "../app/store";
-
 const initialState = {
   searchText: "art",
   currentFilters: [],
@@ -100,27 +98,27 @@ export const slice = createSlice({
     filter: (state) => {
       state.filteredPostData = state.postData.filter((i, index) => {
         if (
-          state.videoChecked == false &&
-          state.articleChecked == false &&
-          state.nsfwChecked == false &&
-          state.imageChecked == false &&
-          state.textChecked == false
+          state.videoChecked === false &&
+          state.articleChecked === false &&
+          state.nsfwChecked === false &&
+          state.imageChecked === false &&
+          state.textChecked === false
         ) {
           return true;
         }
-        if (state.videoChecked == true && i.data.is_video == true) {
+        if (state.videoChecked === true && i.data.is_video === true) {
           return true;
         }
-        if (state.articleChecked == true && i.data.post_hint == "link") {
+        if (state.articleChecked === true && i.data.post_hint === "link") {
           return true;
         }
-        if (state.nsfwChecked == true && i.data.thumbnail == "nsfw") {
+        if (state.nsfwChecked === true && i.data.thumbnail === "nsfw") {
           return true;
         }
-        if (state.imageChecked == true && (i.data.is_gallery == true || i.data.post_hint == "image")) {
+        if (state.imageChecked === true && (i.data.is_gallery === true || i.data.post_hint === "image")) {
           return true;
         }
-        if (state.textChecked == true && i.data.is_self == true) {
+        if (state.textChecked === true && i.data.is_self === true) {
           return true;
         } else {
           return false;
