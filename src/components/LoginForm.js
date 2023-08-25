@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -14,14 +15,33 @@ const LoginForm = () => {
       return;
     }
 
-    // Simulate API call for authentication (replace with actual API call)
-    if (username === "user@example.com" && password === "password") {
+    console.log("hi");
+
+    try {
+      const data = await axios.post(
+        "http://localhost:3000/login",
+        {
+          username: username,
+          password: password,
+        },
+        { withCredentials: true }
+      );
+      console.log(data);
       // Successful login logic here (e.g., set authentication state)
       setErrorMessage("");
       console.log("Login successful");
-    } else {
+    } catch (error) {
+      console.error(error);
       setErrorMessage("Invalid username or password");
     }
+    // // Simulate API call for authentication (replace with actual API call)
+    // if (username === "user@example.com" && password === "password") {
+    //   // Successful login logic here (e.g., set authentication state)
+    //   setErrorMessage("");
+    //   console.log("Login successful");
+    // } else {
+    //   setErrorMessage("Invalid username or password");
+    // }
   };
 
   return (
@@ -47,9 +67,7 @@ const LoginForm = () => {
             className="e"
           />
         </div>
-        <button type="button" className="btn btn-primary ">
-          Login
-        </button>
+        <button className="btn btn-primary">Login</button>
       </form>
     </div>
   );
