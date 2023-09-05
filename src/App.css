@@ -49,3 +49,16 @@ button {
 .login{
   text-align: center;
 }
+
+/* Shop Feed Product Styles Below: */
+.product{
+  background-color: rgb(94, 144, 45);
+  margin: 10px;
+}
+.product_name{
+  font-size: large;
+  font-weight: bold;
+}
+.product_img{
+  max-height: 300px;
+}
