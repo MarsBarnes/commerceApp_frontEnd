@@ -23,7 +23,7 @@ const RegistrationForm = () => {
     <div className="registration-form">
       <h2 className="login">Sign Up</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <form onSubmit={handleLogin} className="form">
+      <form onSubmit={handleLogin} className="form bg-success">
         <div className="form-group">
           <label className="form-label ">First Name:</label>
           <input

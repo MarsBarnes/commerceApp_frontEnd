@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from "react";
-import {Data} from "./Data";
-import { Product } from "./Product";
+import React, { useState } from "react";
+import { Data } from "./ShopData";
+import { ShopProduct } from "./ShopProduct";
 
-
-
-
+//Change so that Data is not hard coded and comes from the data base instead
 const Shop = () => {
   const [productData, setProductData] = useState(Data);
   return (
-    <div className="">
+    <div className="grid">
       {productData?.map((i, index) => (
-        <Product i={i} index={index} />
+        <ShopProduct i={i} index={index} key={i.id} />
       ))}
     </div>
   );
 };
 
 export default Shop;
-
-
-  

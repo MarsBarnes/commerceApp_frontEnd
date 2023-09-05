@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 const Account = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -29,7 +28,7 @@ const Account = () => {
       {console.log(edit)}
       {/* if in edit mode, show form. else show view */}
       {edit ? (
-        <>
+        <div className="bg-success">
           {" "}
           <form onSubmit={handleLogin} className="form">
             <div className="form-group">
@@ -69,9 +68,9 @@ const Account = () => {
               Submit
             </button>
           </form>
-        </>
+        </div>
       ) : (
-        <div className="form">
+        <div className="form bg-success">
           <button
             type="button"
             className="btn btn-primary"

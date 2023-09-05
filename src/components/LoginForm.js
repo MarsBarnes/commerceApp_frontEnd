@@ -48,7 +48,7 @@ const LoginForm = () => {
     <div className="login-form">
       <h2 className="login">Login</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <form onSubmit={handleLogin} className="form">
+      <form onSubmit={handleLogin} className="form bg-success">
         <div className="form-group">
           <label className="form-label usernameLabel">Username:</label>
           <input
