@@ -1,10 +1,25 @@
-import dino from "../images/dinosaur.webp"
+import { useContext } from "react";
+import dino from "../images/dinosaur.webp";
+import { TokenContext } from "../contexts/TokenContext";
+import axios from "axios";
 
 export const ShopProduct = ({ i, index }) => {
+  const token = useContext(TokenContext);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     //add product to cart, quantity 1
-  }
+    const { data } = await axios.post(
+      "http://localhost:3000/cart",
+      {
+        product_id: i.id,
+        product_quantity: 1,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    alert(data.msg);
+  };
 
   return (
     <div className="product bg-success" key={i.id}>

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { TokenContext } from "../contexts/TokenContext";
 
-const Account = ({token}) => {
+const Account = () => {
+  const token = useContext(TokenContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -23,7 +25,7 @@ const Account = ({token}) => {
     //add an edit button. have 1st view read only then when edit button is clicked show form to edit
 
     <div className="account-form">
-      <h2 className="login">Account Details</h2>
+      <h2 className="login">Account Details {token}</h2>
 
       {console.log(edit)}
       {/* if in edit mode, show form. else show view */}
@@ -86,7 +88,6 @@ const Account = ({token}) => {
       )}
     </div>
   );
-
 };
 
 export default Account;
