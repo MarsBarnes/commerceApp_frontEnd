@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Account = () => {
+const Account = ({token}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");

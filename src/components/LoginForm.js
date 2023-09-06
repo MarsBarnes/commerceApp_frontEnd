@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const LoginForm = () => {
+const LoginForm = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -18,15 +18,12 @@ const LoginForm = () => {
     console.log("hi");
 
     try {
-      const data = await axios.post(
-        "http://localhost:3000/login",
-        {
-          username: username,
-          password: password,
-        },
-        { withCredentials: true }
-      );
+      const { data } = await axios.post("http://localhost:3000/login", {
+        username: username,
+        password: password,
+      });
       console.log(data);
+      setToken(data.token);
       // Successful login logic here (e.g., set authentication state)
       setErrorMessage("");
       console.log("Login successful");
