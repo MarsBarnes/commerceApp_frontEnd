@@ -1,19 +1,49 @@
 import React, { useState, useEffect, useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
+import axios from "axios";
 
 const Account = () => {
   const token = useContext(TokenContext);
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
+  // const [firstname, setFirstname] = useState("");
+  // const [lastname, setLastname] = useState("");
+  // const [email, setEmail] = useState("");
   const [edit, setEdit] = useState(false);
+  const [accountData, setAccountData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    username: "",
+  });
+
+  // fetch variables for view mode
+
+  useEffect(() => {
+    async function fetchAccountData() {
+      try {
+        const response = await axios.get("http://localhost:3000/user", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        //  console.log("response firstname: " + response.data.firstname);
+        setAccountData({
+          firstname: response.data.firstname,
+          lastname: response.data.lastname,
+          email: response.data.email,
+          username: response.data.username,
+        });
+      } catch (error) {
+        console.error("Error fetching account data:", error);
+      }
+    }
+    fetchAccountData();
+  }, [token]);
+
+  const { firstname, lastname, email, username } = accountData;
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     // Basic validation
     if (!username || !password) {
       setErrorMessage("Please fill in all fields");
@@ -22,23 +52,20 @@ const Account = () => {
   };
 
   return (
-    //add an edit button. have 1st view read only then when edit button is clicked show form to edit
-
     <div className="account-form">
-      <h2 className="login">Account Details {token}</h2>
-
       {console.log(edit)}
       {/* if in edit mode, show form. else show view */}
+      {/* show edit mode */}
       {edit ? (
-        <div className="bg-success">
-          {" "}
-          <form onSubmit={handleLogin} className="form">
+        <div className="">
+          <h2 className="login">Account Details </h2>{" "}
+          <form onSubmit={handleLogin} className="bg-success form">
             <div className="form-group">
               <label className="form-label ">First Name:</label>
               <input
                 type="text"
                 value={firstname}
-                onChange={(e) => setFirstname(e.target.value)}
+                // onChange={(e) => setFirstname(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -46,7 +73,7 @@ const Account = () => {
               <input
                 type="text"
                 value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
+                // onChange={(e) => setLastname(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -54,7 +81,7 @@ const Account = () => {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                // onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -62,7 +89,7 @@ const Account = () => {
               <input
                 type="text"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                // onChange={(e) => setUsername(e.target.value)}
                 className="usernameInput"
               />
             </div>
@@ -72,18 +99,34 @@ const Account = () => {
           </form>
         </div>
       ) : (
-        <div className="form bg-success">
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={(e) => setEdit(!edit)}
-          >
-            Edit
-          </button>
-          <p>First Name: {firstname}</p>
-          <p>Last Name: {lastname}</p>
-          <p>Email: {email}</p>
-          <p>Username: {username}</p>
+        // show view mode
+        <div>
+          {" "}
+          <h2 className="login">
+            Account Details{" "}
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={(e) => setEdit(!edit)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="editIcon bi bi-pencil"
+                viewBox="0 0 16 16"
+              >
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+              </svg>
+            </button>
+          </h2>
+          <div className="form bg-success">
+            <p>First Name: {firstname}</p>
+            <p>Last Name: {lastname}</p>
+            <p>Email: {email}</p>
+            <p>Username: {username}</p>
+          </div>
         </div>
       )}
     </div>
