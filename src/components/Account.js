@@ -4,12 +4,7 @@ import axios from "axios";
 
 const Account = () => {
   const token = useContext(TokenContext);
-  // const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  // const [firstname, setFirstname] = useState("");
-  // const [lastname, setLastname] = useState("");
-  // const [email, setEmail] = useState("");
   const [edit, setEdit] = useState(false);
   const [accountData, setAccountData] = useState({
     firstname: "",
@@ -37,17 +32,41 @@ const Account = () => {
         console.error("Error fetching account data:", error);
       }
     }
-    fetchAccountData();
+    if (token !== "") {
+      fetchAccountData();
+    }
   }, [token]);
 
   const { firstname, lastname, email, username } = accountData;
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
+    console.log("handling submit");
     e.preventDefault();
     // Basic validation
-    if (!username || !password) {
+    if (!firstname || !lastname || !email || !username) {
       setErrorMessage("Please fill in all fields");
       return;
+    }
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3000/user",
+        // {
+        //   firstname: accountData.firstname,
+        //   lastname: accountData.lastname,
+        //   email: accountData.email,
+        //   username: accountData.username,
+        // },
+        accountData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      //  console.log("response firstname: " + response.data.firstname);
+      setEdit(!edit);
+    } catch (error) {
+      setErrorMessage(error.message);
+      console.error("Error posting account data:", error);
     }
   };
 
@@ -59,13 +78,19 @@ const Account = () => {
       {edit ? (
         <div className="">
           <h2 className="login">Account Details </h2>{" "}
-          <form onSubmit={handleLogin} className="bg-success form">
+          <form onSubmit={handleSubmit} className="bg-success form">
             <div className="form-group">
               <label className="form-label ">First Name:</label>
               <input
                 type="text"
+                name="firstname"
                 value={firstname}
-                // onChange={(e) => setFirstname(e.target.value)}
+                onChange={(e) =>
+                  setAccountData((prevAccountData) => ({
+                    ...prevAccountData, // Spread the previous state
+                    firstname: e.target.value, // Update only the firstname property
+                  }))
+                }
               />
             </div>
             <div className="form-group">
@@ -73,7 +98,12 @@ const Account = () => {
               <input
                 type="text"
                 value={lastname}
-                // onChange={(e) => setLastname(e.target.value)}
+                onChange={(e) =>
+                  setAccountData((prevAccountData) => ({
+                    ...prevAccountData, // Spread the previous state
+                    lastname: e.target.value, // Update only the firstname property
+                  }))
+                }
               />
             </div>
             <div className="form-group">
@@ -81,7 +111,12 @@ const Account = () => {
               <input
                 type="email"
                 value={email}
-                // onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) =>
+                  setAccountData((prevAccountData) => ({
+                    ...prevAccountData, // Spread the previous state
+                    email: e.target.value, // Update only the firstname property
+                  }))
+                }
               />
             </div>
             <div className="form-group">
@@ -89,13 +124,16 @@ const Account = () => {
               <input
                 type="text"
                 value={username}
-                // onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) =>
+                  setAccountData((prevAccountData) => ({
+                    ...prevAccountData, // Spread the previous state
+                    username: e.target.value, // Update only the firstname property
+                  }))
+                }
                 className="usernameInput"
               />
             </div>
-            <button className="btn btn-primary" onClick={(e) => setEdit(!edit)}>
-              Submit
-            </button>
+            <button className="btn btn-primary">Submit</button>
           </form>
         </div>
       ) : (

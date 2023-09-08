@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
+import { TokenContext } from "../contexts/TokenContext";
+import axios from "axios";
 
 function Navbar() {
+  const token = useContext(TokenContext);
+
+  async function handleLogout() {
+    try {
+      await axios.post("http://localhost:3000/logout", null, {
+        headers: { Authorization: `Bearer ${token}` },
+      }); 
+      console.log("Logged out successfully");
+      // Redirect to the shop page after logout
+    } catch (error) {
+      // console.error("Error logging out:", error);
+      console.log('woops')
+    }
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -39,10 +56,10 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/logout">
+              <button type="button" className="nav-link" onClick={handleLogout}>
                 {/* add logout logic and then redirect to shop page */}
                 Logout
-              </NavLink>
+              </button>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/register">

@@ -16,7 +16,7 @@ function App() {
   const saveToken = (token) => {
     localStorage.token = token;
     setToken(token);
-  }
+  };
 
   return (
     <div className="App">
