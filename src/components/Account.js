@@ -51,12 +51,6 @@ const Account = () => {
     try {
       const { data } = await axios.post(
         "http://localhost:3000/user",
-        // {
-        //   firstname: accountData.firstname,
-        //   lastname: accountData.lastname,
-        //   email: accountData.email,
-        //   username: accountData.username,
-        // },
         accountData,
         {
           headers: { Authorization: `Bearer ${token}` },

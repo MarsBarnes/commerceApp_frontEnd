@@ -11,18 +11,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { TokenContext } from "./contexts/TokenContext";
 
 function App() {
-  const [token, setToken] = useState(localStorage.token);
+  const [token, setToken] = useState(localStorage.token || "");
 
   const saveToken = (token) => {
     localStorage.token = token;
     setToken(token);
   };
 
+  const logout = () => saveToken("");
+
   return (
     <div className="App">
       <TokenContext.Provider value={token}>
         <Router>
-          <Nav></Nav>
+          <Nav logout={logout}></Nav>
           <Routes>
             <Route path="/login" element={<LoginForm setToken={saveToken} />} />
             <Route path="/register" element={<RegistrationForm />} />

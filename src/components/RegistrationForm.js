@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { TokenContext } from "../contexts/TokenContext";
+import axios from "axios";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -8,14 +10,54 @@ const RegistrationForm = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+    const token = useContext(TokenContext);
 
-  const handleLogin = async (e) => {
+  const HandleRegistration = async (e) => {
     e.preventDefault();
 
     // Basic validation
-    if (!username || !password) {
+    if (
+      !username ||
+      !password ||
+      !confirmPassword ||
+      !firstname ||
+      !lastname ||
+      !email
+    ) {
       setErrorMessage("Please fill in all fields");
       return;
+    }
+
+    //Password and confirm password must match
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match");
+      return;
+    }
+
+    try {
+          const { data } = await axios.post(
+            "http://localhost:3000/register",
+            {
+              email: email,
+              lastname: lastname,
+              username: username,
+              firstname: firstname,
+              passwordhashed: password,
+            },
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+          // alert for account created successfully
+          alert(
+            "Account created Successfully. Login with your new username and password."
+      );
+      setErrorMessage("")
+
+          //  console.log("response firstname: " + response.data.firstname);
+        } catch (error) {
+      setErrorMessage(error.message);
+      console.error("Error registering account data:", error);
     }
   };
 
@@ -23,7 +65,7 @@ const RegistrationForm = () => {
     <div className="registration-form">
       <h2 className="login">Sign Up</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <form onSubmit={handleLogin} className="form bg-success">
+      <form onSubmit={HandleRegistration} className="form bg-success">
         <div className="form-group">
           <label className="form-label ">First Name:</label>
           <input

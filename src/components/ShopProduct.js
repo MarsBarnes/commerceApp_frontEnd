@@ -42,6 +42,8 @@ import axios from "axios";
 
 export const ShopProduct = ({ i, index }) => {
   const token = useContext(TokenContext);
+    const loggedIn = token !== "";
+    console.log("token", token);
 
   const handleClick = async () => {
     //add product to cart, quantity 1
@@ -58,6 +60,12 @@ export const ShopProduct = ({ i, index }) => {
     alert(data.msg);
   };
 
+  
+    const handleCartClickWhenLoggedOut = async () => {
+  
+      alert("Login to add items to your cart.");
+    };
+
     return (
       <div className="col">
         <div className="card bg-success h-100" key={i.id}>
@@ -71,9 +79,9 @@ export const ShopProduct = ({ i, index }) => {
             <button
               className="btn btn-secondary mt-auto" // Use mt-auto to push the button to the bottom
               type="button"
-              onClick={handleClick}
+              onClick={loggedIn ? handleClick : handleCartClickWhenLoggedOut}
             >
-              Add To Cart
+              Add to Cart
             </button>
           </div>
         </div>
