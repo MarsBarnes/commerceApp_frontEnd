@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-// import { CartData } from "./CartData";
 import { CartProduct } from "./CartProduct";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "axios";
@@ -70,9 +69,11 @@ const Cart = () => {
         ) : (
           <p>Your cart is empty</p>
         )}
+
         <button
           className="checkout_button btn btn-primary"
           type="button"
+          disabled={cartData.length === 0 ? true : false}
           onClick={handleCheckout}
         >
           Checkout

@@ -6,7 +6,8 @@ import Nav from "./components/Nav";
 import Account from "./components/Account";
 import Cart from "./components/Cart";
 import Shop from "./components/Shop";
-import Orders from "./components/Orders";
+import OrdersOverview from "./components/OrdersOverview";
+import Order from "./components/Order";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { TokenContext } from "./contexts/TokenContext";
 
@@ -31,7 +32,8 @@ function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/orders" element={<Orders />} />
+            <Route path="/orders" element={<OrdersOverview />} />
+            <Route path="/order" element={<Order />} />
           </Routes>
         </Router>
       </TokenContext.Provider>
