@@ -31,19 +31,12 @@ const LoginForm = ({ setToken }) => {
       console.error(error);
       setErrorMessage("Invalid username or password");
     }
-    // // Simulate API call for authentication (replace with actual API call)
-    // if (username === "user@example.com" && password === "password") {
-    //   // Successful login logic here (e.g., set authentication state)
-    //   setErrorMessage("");
-    //   console.log("Login successful");
-    // } else {
-    //   setErrorMessage("Invalid username or password");
-    // }
+
   };
 
   return (
     <div className="login-form">
-      <h2 className="login">Login</h2>
+      <h2 className="center">Login</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleLogin} className="form bg-success">
         <div className="form-group">

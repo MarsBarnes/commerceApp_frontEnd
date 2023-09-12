@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "axios";
-import {OrderSummary} from "./OrderSummary"
+import { OrderSummary } from "./OrderSummary"
 
 const OrdersOverview = () => {
   const token = useContext(TokenContext);
   const [ordersData, setOrdersData] = useState([]);
+
   useEffect(() => {
     async function fetchOrdersData() {
       try {

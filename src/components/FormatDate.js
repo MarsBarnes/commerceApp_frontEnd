@@ -19,7 +19,7 @@ export const FormatDate = ({ i, index }) => {
     );
     return formattedDate;
   }
-  const formattedDate = formatDate(i.created_at);
+  const formattedDate = formatDate(i);
 
   return <p className="card-text">Ordered on: {formattedDate}</p>;
 };

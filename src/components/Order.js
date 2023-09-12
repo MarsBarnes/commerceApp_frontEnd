@@ -1,45 +1,34 @@
 import React, { useState, useEffect, useContext } from "react";
 import { OrderProducts } from "./OrderProducts";
 import { TokenContext } from "../contexts/TokenContext";
-import axios from "axios";
 import { useParams } from "react-router-dom";
-import { OrderSummary } from "./OrderSummary";
 import { FormatDate } from "./FormatDate";
+import { useOrderData } from "../hooks/useOrderData";
 
 
 const Order = () => {
   const i = useParams();
   console.log('i', i)
-    const token = useContext(TokenContext);
-    const [orderData, setOrderData] = useState([]);
-    useEffect(() => {
-      async function fetchOrderData() {
-        try {
-          const response = await axios.get(`http://localhost:3000/orders/${i.orderId}`, {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          console.log(response.data);
-          setOrderData(response.data); // Update the state with fetched data
-        } catch (error) {
-          console.error("Error fetching order data:", error);
-        }
-      }
+  const token = useContext(TokenContext);
+  const orderData = useOrderData(i.orderId);
+  console.log('orderDATA: ' + orderData[0])
 
-      fetchOrderData();
-    }, [token, i.orderId]);
+  //GOAL: get orderData to display on order page
 
   return (
     <div className="shop-width">
-      <h1> Order {i.orderId} </h1>
+      <h1 className="center"> Order </h1>
 
       <div className="grid">
         <div className="card mb-3 .h-100 bg-success" key={i.id}>
           <div className="row g-0">
             <div className="">
               <div className="card-body">
-                <h5 className="card-title">Order Number: {i.id}</h5>
+                <h5 className="card-title">
+                  Order Number: {orderData[0]?.order_id}
+                </h5>
                 {/* add date, total, and orderNumber to order table when order is checkout and then replace these values  */}
-                <FormatDate i={i} />
+                <FormatDate i={orderData[0]?.created_at} />
                 <p className="card-text">Total: $30.45</p>
               </div>
             </div>
@@ -47,11 +36,7 @@ const Order = () => {
         </div>
         {orderData && orderData.length > 0 ? (
           orderData.map((i, index) => (
-            <OrderProducts
-              i={i}
-              index={index}
-              key={i.product_id}
-            />
+            <OrderProducts i={i} index={index} key={i.product_id} />
           ))
         ) : (
           <p>You haven't made any orders yet.</p>

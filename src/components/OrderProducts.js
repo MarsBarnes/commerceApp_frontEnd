@@ -17,9 +17,9 @@ export const OrderProducts = ({ i, index }) => {
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title">{i.product_name}</h5>
-            <p className="card-text">{i.product_description}</p>
-            <p>{i.price}</p>
+            <h5 className="card-title">name: {i.product_name}</h5>
+            <p className="card-text">description: {i.product_description}</p>
+            <p>Price: {i.price}</p>
             <p>Color: {i.color}</p>
             <p>Quantity: {i.product_quantity}</p>
           </div>
