@@ -2,8 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { OrderProducts } from "./OrderProducts";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Order = () => {
+  const params = useParams();
+  console.log('params', params)
   //   const token = useContext(TokenContext);
   //   const [ordersData, setOrdersData] = useState([]);
   //   useEffect(() => {
@@ -43,7 +46,7 @@ const Order = () => {
     //     )}
     //   </div>
     // </div>
-    <h1> Order</h1>
+    <h1> Order {params.orderId} </h1>
   );
 };
 

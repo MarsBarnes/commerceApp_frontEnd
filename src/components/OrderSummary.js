@@ -34,7 +34,7 @@ export const OrderSummary = ({ i, index }) => {
             {/* add date, total, and orderNumber to order table when order is checkout and then replace these values  */}
             <p className="card-text">Ordered on: {formattedDate}</p>
             <p className="card-text">Total: $30.45</p>
-            <Link to={"/order"} className="btn btn-secondary">
+            <Link to={`/order/${i.id}`} className="btn btn-secondary" >
               View Order
             </Link>
           </div>

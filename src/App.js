@@ -33,7 +33,7 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/orders" element={<OrdersOverview />} />
-            <Route path="/order" element={<Order />} />
+            <Route path="/order/:orderId" element={<Order />} />
           </Routes>
         </Router>
       </TokenContext.Provider>
