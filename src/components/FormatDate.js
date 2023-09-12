@@ -21,5 +21,9 @@ export const FormatDate = ({ i, index }) => {
   }
   const formattedDate = formatDate(i);
 
-  return <p className="card-text">Ordered on: {formattedDate}</p>;
+  return (
+    <p className="card-text" className="noMargins">
+      Ordered on: {formattedDate}
+    </p>
+  );
 };

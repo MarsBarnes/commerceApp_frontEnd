@@ -89,3 +89,6 @@ button {
   align-items: center;
   margin-top: -5px;
 }
+.noMargins{
+  margin: 0;
+}
