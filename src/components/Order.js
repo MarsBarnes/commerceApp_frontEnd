@@ -3,50 +3,61 @@ import { OrderProducts } from "./OrderProducts";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { OrderSummary } from "./OrderSummary";
+import { FormatDate } from "./FormatDate";
+
 
 const Order = () => {
-  const params = useParams();
-  console.log('params', params)
-  //   const token = useContext(TokenContext);
-  //   const [ordersData, setOrdersData] = useState([]);
-  //   useEffect(() => {
-  //     async function fetchOrdersData() {
-  //       try {
-  //         const response = await axios.get("http://localhost:3000/orders", {
-  //           headers: { Authorization: `Bearer ${token}` },
-  //         });
-  //         console.log(response.data);
-  //         setOrdersData(response.data); // Update the state with fetched data
-  //       } catch (error) {
-  //         console.error("Error fetching cart data:", error);
-  //       }
-  //     }
+  const i = useParams();
+  console.log('i', i)
+    const token = useContext(TokenContext);
+    const [orderData, setOrderData] = useState([]);
+    useEffect(() => {
+      async function fetchOrderData() {
+        try {
+          const response = await axios.get(`http://localhost:3000/orders/${i.orderId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          console.log(response.data);
+          setOrderData(response.data); // Update the state with fetched data
+        } catch (error) {
+          console.error("Error fetching order data:", error);
+        }
+      }
 
-  //     fetchOrdersData();
-  //   }, [token]);
-
-  //   const viewOrder = async () => {
-  //     //add logic to redirect to specific order page
-  //   };
+      fetchOrderData();
+    }, [token, i.orderId]);
 
   return (
-    // <div className="shop-width">
-    //   <div className="grid">
-    //     {ordersData && ordersData.length > 0 ? (
-    //       ordersData.map((i, index) => (
-    //         <Order
-    //           i={i}
-    //           index={index}
-    //           key={i.product_id}
-    //           viewOrder={viewOrder}
-    //         />
-    //       ))
-    //     ) : (
-    //       <p>You haven't made any orders yet.</p>
-    //     )}
-    //   </div>
-    // </div>
-    <h1> Order {params.orderId} </h1>
+    <div className="shop-width">
+      <h1> Order {i.orderId} </h1>
+
+      <div className="grid">
+        <div className="card mb-3 .h-100 bg-success" key={i.id}>
+          <div className="row g-0">
+            <div className="">
+              <div className="card-body">
+                <h5 className="card-title">Order Number: {i.id}</h5>
+                {/* add date, total, and orderNumber to order table when order is checkout and then replace these values  */}
+                <FormatDate i={i} />
+                <p className="card-text">Total: $30.45</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {orderData && orderData.length > 0 ? (
+          orderData.map((i, index) => (
+            <OrderProducts
+              i={i}
+              index={index}
+              key={i.product_id}
+            />
+          ))
+        ) : (
+          <p>You haven't made any orders yet.</p>
+        )}
+      </div>
+    </div>
   );
 };
 
