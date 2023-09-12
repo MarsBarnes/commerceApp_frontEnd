@@ -13,7 +13,9 @@ const Order = () => {
   const orderData = useOrderData(i.orderId);
   console.log('orderDATA: ' + orderData[0])
 
-  //GOAL: get orderData to display on order page
+  //GOAL: get productData for each product_id in orderData. to display on order page
+//iterate through OrderData to get list of product_ids and product_quantities
+//
 
   return (
     <div className="shop-width">
@@ -34,9 +36,14 @@ const Order = () => {
             </div>
           </div>
         </div>
+        {/* change orderData to an array of product data */}
         {orderData && orderData.length > 0 ? (
-          orderData.map((i, index) => (
-            <OrderProducts i={i} index={index} key={i.product_id} />
+          orderData.map((orderItem, index) => (
+            <OrderProducts
+              i={orderItem}
+              index={index}
+              key={orderItem.product_id}
+            />
           ))
         ) : (
           <p>You haven't made any orders yet.</p>
