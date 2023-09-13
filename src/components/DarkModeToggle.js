@@ -3,9 +3,26 @@ import React, { useState, useEffect } from "react";
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(false);
 
+  // useEffect(() => {
+  //   const element = document.body;
+  //   element.dataset.bsTheme = darkMode ? "light" : "dark";
+  // }, [darkMode]);
+
   useEffect(() => {
     const element = document.body;
-    element.dataset.bsTheme = darkMode ? "light" : "dark";
+
+    if (darkMode) {
+      // Dark mode styles
+      element.dataset.bsTheme = "dark";
+      element.style.backgroundColor = "#212529";
+      // You can set dark mode styles here
+    } else {
+      // Light mode styles
+      element.dataset.bsTheme = "light";
+      // Change the body background color to #FF0000 for the light theme
+      element.style.backgroundColor = "#4D5256";
+      // You can set other light mode styles here
+    }
   }, [darkMode]);
 
   function toggle() {

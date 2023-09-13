@@ -31,7 +31,7 @@ const Order = () => {
                 </h5>
                 {/* add total to order table when order is checkout and then replace total value  */}
                 <FormatDate i={orderData[0]?.created_at} />
-                <p className="card-text">Total: $30.45</p>
+                <p className="card-text">Total: {orderData[0]?.total}</p>
               </div>
             </div>
           </div>

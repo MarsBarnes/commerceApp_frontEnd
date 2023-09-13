@@ -52,6 +52,7 @@ export const ShopProduct = ({ i, index }) => {
       {
         product_id: i.id,
         product_quantity: 1,
+        price: i.price
       },
       {
         headers: { Authorization: `Bearer ${token}` },
