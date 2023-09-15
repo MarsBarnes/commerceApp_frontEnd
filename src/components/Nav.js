@@ -51,7 +51,7 @@ function Navbar({ logout }) {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <a className="navbar-brand" href="/shop">
-              LoggedIn
+              Sticker Shop
             </a>
             <button
               className="navbar-toggler"
@@ -126,7 +126,7 @@ function Navbar({ logout }) {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <a className="navbar-brand" href="/shop">
-              LoggedOut
+              Sticker Shop
             </a>
             <button
               className="navbar-toggler"

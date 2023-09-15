@@ -35,6 +35,16 @@ const RegistrationForm = () => {
       setErrorMessage("Passwords do not match");
       return;
     }
+    if (
+      password === username ||
+      password === firstname ||
+      password === lastname ||
+      password === email ||
+      password === 'password'
+    ) {
+      setErrorMessage("Choose a different password");
+      return;
+    }
 
     try {
       const { data } = await axios.post(
@@ -44,7 +54,7 @@ const RegistrationForm = () => {
           lastname: lastname,
           username: username,
           firstname: firstname,
-          passwordhashed: password,
+          password: password,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -66,7 +76,7 @@ const RegistrationForm = () => {
 
   return (
     <div className="registration-form">
-      <h2 className="login">Sign Up</h2>
+      <h2 className="login"> Sign Up</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={HandleRegistration} className="form bg-success">
         <div className="form-group">
@@ -118,6 +128,7 @@ const RegistrationForm = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             className="e"
+            minlength="8"
           />
         </div>
         <button className="btn btn-primary">Register</button>

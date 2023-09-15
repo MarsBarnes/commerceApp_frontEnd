@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import dino from "../images/dinosaur.webp";
+import dino from "../images/sticker.jpg";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
 

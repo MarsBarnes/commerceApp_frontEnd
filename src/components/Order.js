@@ -19,8 +19,6 @@ const Order = () => {
 
   return (
     <div className="shop-width">
-      <h1 className="center"> Order </h1>
-
       <div className="grid">
         <div className="card mb-3 .h-100 bg-success" key={i.id}>
           <div className="row g-0">

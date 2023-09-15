@@ -161,7 +161,7 @@ const Account = () => {
           </div>
         </div>
       )}
-      <div>
+      {/* <div>
         <h1 className="bg-primary">Primary</h1>
         <h1 className="bg-secondary">Secondary</h1>
         <h1 className="bg-success">success</h1>
@@ -170,7 +170,7 @@ const Account = () => {
         <h1 className="bg-danger">danger</h1>
         <h1 className="bg-light">light</h1>
         <h1 className="bg-dark text-light-emphasis">dark</h1>
-      </div>
+      </div> */}
     </div>
   );
 };
