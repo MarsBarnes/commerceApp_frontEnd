@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
-import axios from "axios";
+import axios from "../api";
 
 const Account = () => {
   const token = useContext(TokenContext);
@@ -161,6 +161,16 @@ const Account = () => {
           </div>
         </div>
       )}
+      <div>
+        <h1 className="bg-primary">Primary</h1>
+        <h1 className="bg-secondary">Secondary</h1>
+        <h1 className="bg-success">success</h1>
+        <h1 className="bg-info">info</h1>
+        <h1 className="bg-warning">warning</h1>
+        <h1 className="bg-danger">danger</h1>
+        <h1 className="bg-light">light</h1>
+        <h1 className="bg-dark text-light-emphasis">dark</h1>
+      </div>
     </div>
   );
 };

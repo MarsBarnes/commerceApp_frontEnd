@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
-import axios from "axios";
+import axios from "../api";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -10,7 +11,8 @@ const RegistrationForm = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
-    const token = useContext(TokenContext);
+  const token = useContext(TokenContext);
+  const navigate = useNavigate();
 
   const HandleRegistration = async (e) => {
     e.preventDefault();
@@ -35,27 +37,28 @@ const RegistrationForm = () => {
     }
 
     try {
-          const { data } = await axios.post(
-            "http://localhost:3000/register",
-            {
-              email: email,
-              lastname: lastname,
-              username: username,
-              firstname: firstname,
-              passwordhashed: password,
-            },
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            }
-          );
-          // alert for account created successfully
-          alert(
-            "Account created Successfully. Login with your new username and password."
+      const { data } = await axios.post(
+        "http://localhost:3000/register",
+        {
+          email: email,
+          lastname: lastname,
+          username: username,
+          firstname: firstname,
+          passwordhashed: password,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
-      setErrorMessage("")
+      // alert for account created successfully
+      alert(
+        "Account created Successfully. Login with your new username and password."
+      );
+      setErrorMessage("");
+      navigate("/login");
 
-          //  console.log("response firstname: " + response.data.firstname);
-        } catch (error) {
+      //  console.log("response firstname: " + response.data.firstname);
+    } catch (error) {
       setErrorMessage(error.message);
       console.error("Error registering account data:", error);
     }

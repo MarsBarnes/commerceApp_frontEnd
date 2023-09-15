@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
-import axios from "axios";
+import axios from "../api";
 
-export const useOrderData = ( orderId ) => {
+export const useOrderData = (orderId) => {
   const token = useContext(TokenContext);
   const [orderData, setOrderData] = useState([]);
   useEffect(() => {
@@ -23,8 +23,6 @@ export const useOrderData = ( orderId ) => {
 
     fetchOrderData();
   }, [token, orderId]);
-    
-    return orderData;
+
+  return orderData;
 };
-
-

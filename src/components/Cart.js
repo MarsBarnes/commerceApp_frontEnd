@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { CartProduct } from "./CartProduct";
 import { TokenContext } from "../contexts/TokenContext";
-import axios from "axios";
+import axios from "../api";
 
 //Change so that Data is not hard coded and comes freom the data base instead
 const Cart = () => {
@@ -44,11 +44,15 @@ const Cart = () => {
   const handleCheckout = async () => {
     try {
       // Make an API call to checkout cart
-      await axios.post(`http://localhost:3000/cart/checkout`, {}, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      alert("Your order was successfully placed")
-      setCartData([])
+      await axios.post(
+        `http://localhost:3000/cart/checkout`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      alert("Your order was successfully placed");
+      setCartData([]);
     } catch (error) {
       console.error("Error Checking Out:", error);
     }

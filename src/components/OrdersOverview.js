@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
-import axios from "axios";
-import { OrderSummary } from "./OrderSummary"
+import axios from "../api";
+import { OrderSummary } from "./OrderSummary";
 
 const OrdersOverview = () => {
   const token = useContext(TokenContext);
@@ -28,11 +28,7 @@ const OrdersOverview = () => {
       <div className="grid">
         {ordersData && ordersData.length > 0 ? (
           ordersData.map((i, index) => (
-            <OrderSummary
-              i={i}
-              index={index}
-              key={i.product_id}
-            />
+            <OrderSummary i={i} index={index} key={i.product_id} />
           ))
         ) : (
           <p>You haven't made any orders yet.</p>

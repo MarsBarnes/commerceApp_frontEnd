@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import dino from "../images/dinosaur.webp";
 import { TokenContext } from "../contexts/TokenContext";
-import axios from "axios";
+import axios from "../api";
 
 export const CartProduct = ({ i, index, removeFromCart }) => {
   const token = useContext(TokenContext);

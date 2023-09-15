@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../api";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({ setToken }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,11 +29,11 @@ const LoginForm = ({ setToken }) => {
       // Successful login logic here (e.g., set authentication state)
       setErrorMessage("");
       console.log("Login successful");
+      navigate("/shop");
     } catch (error) {
       console.error(error);
       setErrorMessage("Invalid username or password");
     }
-
   };
 
   return (
