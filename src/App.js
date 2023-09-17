@@ -10,6 +10,7 @@ import OrdersOverview from "./components/OrdersOverview";
 import Order from "./components/Order";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { TokenContext } from "./contexts/TokenContext";
+import { Navigate } from "react-router-dom";
 
 function App() {
   const [token, setToken] = useState(localStorage.token || "");
@@ -27,6 +28,7 @@ function App() {
         <Router>
           <Nav logout={logout}></Nav>
           <Routes>
+            <Route path="/" element={<Navigate to="/shop" />} />
             <Route path="/login" element={<LoginForm setToken={saveToken} />} />
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/account" element={<Account />} />
