@@ -9,7 +9,7 @@ export const useOrderData = (orderId) => {
     async function fetchOrderData() {
       try {
         const response = await axios.get(
-          `http://localhost:3000/orders/${orderId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/orders/${orderId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

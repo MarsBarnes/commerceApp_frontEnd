@@ -7,23 +7,10 @@ import axios from "../api";
 function Navbar({ logout }) {
   const token = useContext(TokenContext);
   const loggedIn = token !== "";
-  //  CHANGE LOGGEDiN TO CHECK ENSURE AUTHENTICATION CALL INSTEAD OF TOKEN
-
-  // const loggedIn = async () => {
-  //   try {
-  //     await axios.get("http://localhost:3000/ensureAuth", null, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     });
-  //     console.log("Authorization successful");
-  //   } catch (error) {
-  //     console.log("woops");
-  //   }
-  // }
-  console.log("token", token);
 
   async function handleLogout() {
     try {
-      await axios.post("http://localhost:3000/logout", null, {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

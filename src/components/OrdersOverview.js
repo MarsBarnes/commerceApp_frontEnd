@@ -10,9 +10,12 @@ const OrdersOverview = () => {
   useEffect(() => {
     async function fetchOrdersData() {
       try {
-        const response = await axios.get("http://localhost:3000/orders", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/orders`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         console.log(response.data);
         setOrdersData(response.data); // Update the state with fetched data
       } catch (error) {

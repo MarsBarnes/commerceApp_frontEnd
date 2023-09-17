@@ -18,9 +18,12 @@ const Account = () => {
   useEffect(() => {
     async function fetchAccountData() {
       try {
-        const response = await axios.get("http://localhost:3000/user", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/user`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         //  console.log("response firstname: " + response.data.firstname);
         setAccountData({
           firstname: response.data.firstname,
@@ -50,7 +53,7 @@ const Account = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/user",
+        `${process.env.REACT_APP_BACKEND_URL}/user`,
         accountData,
         {
           headers: { Authorization: `Bearer ${token}` },

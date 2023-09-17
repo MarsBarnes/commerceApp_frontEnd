@@ -40,7 +40,7 @@ const RegistrationForm = () => {
       password === firstname ||
       password === lastname ||
       password === email ||
-      password === 'password'
+      password === "password"
     ) {
       setErrorMessage("Choose a different password");
       return;
@@ -48,7 +48,7 @@ const RegistrationForm = () => {
 
     try {
       await axios.post(
-        "http://localhost:3000/register",
+        `${process.env.REACT_APP_BACKEND_URL}/register`,
         {
           email: email,
           lastname: lastname,

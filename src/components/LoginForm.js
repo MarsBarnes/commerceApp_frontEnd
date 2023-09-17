@@ -20,10 +20,13 @@ const LoginForm = ({ setToken }) => {
     console.log("hi");
 
     try {
-      const { data } = await axios.post("http://localhost:3000/login", {
-        username: username,
-        password: password,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/login`,
+        {
+          username: username,
+          password: password,
+        }
+      );
       console.log(data);
       setToken(data.token);
       // Successful login logic here (e.g., set authentication state)

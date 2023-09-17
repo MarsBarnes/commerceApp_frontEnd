@@ -12,9 +12,12 @@ const Cart = () => {
   const removeFromCart = async (productId) => {
     try {
       // Make an API call to remove the item from the database
-      await axios.delete(`http://localhost:3000/cart/${productId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/cart/${productId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       // Update the cart data by filtering out the removed item
       setCartData((prevCartData) =>
@@ -28,9 +31,12 @@ const Cart = () => {
   useEffect(() => {
     async function fetchCartData() {
       try {
-        const response = await axios.get("http://localhost:3000/cart", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/cart`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         console.log(response.data);
         setCartData(response.data); // Update the state with fetched data
       } catch (error) {
@@ -45,7 +51,7 @@ const Cart = () => {
     try {
       // Make an API call to checkout cart
       await axios.post(
-        `http://localhost:3000/cart/checkout`,
+        `${process.env.REACT_APP_BACKEND_URL}/cart/checkout`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

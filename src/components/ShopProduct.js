@@ -6,12 +6,11 @@ import axios from "../api";
 export const ShopProduct = ({ i, index }) => {
   const token = useContext(TokenContext);
   const loggedIn = token !== "";
-  console.log("token", token);
 
   const handleClick = async () => {
     //add product to cart, quantity 1
     const { data } = await axios.post(
-      "http://localhost:3000/cart",
+      `${process.env.REACT_APP_BACKEND_URL}/cart`,
       {
         product_id: i.id,
         product_quantity: 1,
