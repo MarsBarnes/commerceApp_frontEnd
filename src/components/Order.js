@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import { OrderProducts } from "./OrderProducts";
-import { TokenContext } from "../contexts/TokenContext";
 import { useParams } from "react-router-dom";
 import { FormatDate } from "./FormatDate";
 import { useOrderData } from "../hooks/useOrderData";
@@ -9,7 +8,6 @@ import { useOrderData } from "../hooks/useOrderData";
 const Order = () => {
   const i = useParams();
   console.log('i', i)
-  const token = useContext(TokenContext);
   const orderData = useOrderData(i.orderId);
   console.log('orderDATA: ' + orderData[0])
 

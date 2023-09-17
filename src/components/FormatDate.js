@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
-import { TokenContext } from "../contexts/TokenContext";
+import React from "react";
 
 export const FormatDate = ({ i, index }) => {
-  const token = useContext(TokenContext);
 
   function formatDate(dateString) {
     const options = {
@@ -22,7 +20,7 @@ export const FormatDate = ({ i, index }) => {
   const formattedDate = formatDate(i);
 
   return (
-    <p className="card-text" className="noMargins">
+    <p className="card-text noMargins">
       Ordered on: {formattedDate}
     </p>
   );

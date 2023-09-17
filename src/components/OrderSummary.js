@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { TokenContext } from "../contexts/TokenContext";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FormatDate } from "./FormatDate";
 
 
 export const OrderSummary = ({ i, index }) => {
-  const token = useContext(TokenContext);
 
   return (
     <div className="card mb-3 .h-100 bg-success" key={i.id}>

@@ -1,19 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import dino from "../images/sticker.jpg";
 
 
 export const OrderProducts = ({ i, index }) => {
-  const {
-    product_name,
-    product_description,
-    price,
-    color,
-    product_quantity,
-    product_id,
-  } = i;
 
   return (
-    <div className="card mb-3 .h-100 bg-success" key={product_id}>
+    <div className="card mb-3 .h-100 bg-success" key={i.product_id}>
       <div className="row g-0">
         <div className="col-md-4">
           <img

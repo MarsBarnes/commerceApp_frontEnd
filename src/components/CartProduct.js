@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import dino from "../images/sticker.jpg";
-import { TokenContext } from "../contexts/TokenContext";
-import axios from "../api";
 
 export const CartProduct = ({ i, index, removeFromCart }) => {
-  const token = useContext(TokenContext);
 
   const handleClick = async () => {
     removeFromCart(i.product_id);

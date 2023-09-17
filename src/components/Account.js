@@ -49,7 +49,7 @@ const Account = () => {
     }
 
     try {
-      const { data } = await axios.post(
+      await axios.post(
         "http://localhost:3000/user",
         accountData,
         {
@@ -66,9 +66,10 @@ const Account = () => {
 
   return (
     <div className="account-form">
-      {console.log(edit)}
+      {/* {console.log(edit)} */}
       {/* if in edit mode, show form. else show view */}
       {/* show edit mode */}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       {edit ? (
         <div className="">
           <h2 className="login">Account Details </h2>{" "}

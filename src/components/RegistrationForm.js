@@ -47,7 +47,7 @@ const RegistrationForm = () => {
     }
 
     try {
-      const { data } = await axios.post(
+      await axios.post(
         "http://localhost:3000/register",
         {
           email: email,
