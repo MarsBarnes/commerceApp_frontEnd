@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import { Data } from "./ShopData";
 import { ShopProduct } from "./ShopProduct";
 import axios from "../api";
 
-//Change so that Data is not hard coded and comes from the data base instead
 const Shop = () => {
   const [productData, setProductData] = useState([]);
 

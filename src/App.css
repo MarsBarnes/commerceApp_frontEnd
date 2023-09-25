@@ -37,7 +37,6 @@ button {
 .form {
   display: grid;
   gap: 10px;
-  /* background-color: rgb(94, 144, 45); */
   padding: 20px;
   border-radius: 5px;
 }
@@ -48,7 +47,6 @@ button {
 
 /* Shop Feed Product Styles Below: */
 .product{
-  /* background-color: rgb(94, 144, 45); */
   margin: 10px;
   padding: 10px;
 }
@@ -91,4 +89,13 @@ button {
 }
 .noMargins{
   margin: 0;
+}
+
+/* link buttons */
+.flex{
+  display: flex;
+}
+
+.linkButtons{
+  margin: 10px;
 }
