@@ -8,20 +8,6 @@ const DarkModeToggle = () => {
     element.dataset.bsTheme = darkMode ? "dark" : "light";
   }, [darkMode]);
 
-  // useEffect(() => {
-  //   const element = document.body;
-
-  //   if (darkMode) {
-  //     // Dark mode styles
-  //     element.dataset.bsTheme = "dark";
-  //     // element.style.backgroundColor = "#212529";
-  //   } else {
-  //     // Light mode styles
-  //     element.dataset.bsTheme = "light";
-  //     // element.style.backgroundColor = "#4D5256";
-  //   }
-  // }, [darkMode]);
-
   function toggle() {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   }

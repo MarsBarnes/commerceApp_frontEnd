@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
-import LinkButtons from "./LinkButtons";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
 
@@ -16,17 +15,15 @@ function Navbar({ logout }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Logged out successfully");
       logout();
       // Redirect to the shop page after logout
     } catch (error) {
-      console.log("woops");
+      console.error("error occured");
     }
   }
 
   return (
     <div>
-      {console.log("loggedIn: " + loggedIn)}
       {loggedIn ? (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">

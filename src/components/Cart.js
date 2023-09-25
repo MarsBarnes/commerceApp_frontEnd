@@ -3,7 +3,6 @@ import { CartProduct } from "./CartProduct";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
 
-//Change so that Data is not hard coded and comes freom the data base instead
 const Cart = () => {
   const token = useContext(TokenContext);
 
@@ -37,7 +36,6 @@ const Cart = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        console.log(response.data);
         setCartData(response.data); // Update the state with fetched data
       } catch (error) {
         console.error("Error fetching cart data:", error);

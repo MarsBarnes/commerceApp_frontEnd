@@ -24,7 +24,6 @@ const Account = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        //  console.log("response firstname: " + response.data.firstname);
         setAccountData({
           firstname: response.data.firstname,
           lastname: response.data.lastname,
@@ -43,7 +42,6 @@ const Account = () => {
   const { firstname, lastname, email, username } = accountData;
 
   const handleSubmit = async (e) => {
-    console.log("handling submit");
     e.preventDefault();
     // Basic validation
     if (!firstname || !lastname || !email || !username) {
@@ -59,7 +57,6 @@ const Account = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      //  console.log("response firstname: " + response.data.firstname);
       setEdit(!edit);
     } catch (error) {
       setErrorMessage(error.message);
@@ -69,7 +66,6 @@ const Account = () => {
 
   return (
     <div className="account-form">
-      {/* {console.log(edit)} */}
       {/* if in edit mode, show form. else show view */}
       {/* show edit mode */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -98,8 +94,8 @@ const Account = () => {
                 value={lastname}
                 onChange={(e) =>
                   setAccountData((prevAccountData) => ({
-                    ...prevAccountData, // Spread the previous state
-                    lastname: e.target.value, // Update only the firstname property
+                    ...prevAccountData, 
+                    lastname: e.target.value,
                   }))
                 }
               />
@@ -111,8 +107,8 @@ const Account = () => {
                 value={email}
                 onChange={(e) =>
                   setAccountData((prevAccountData) => ({
-                    ...prevAccountData, // Spread the previous state
-                    email: e.target.value, // Update only the firstname property
+                    ...prevAccountData, 
+                    email: e.target.value,
                   }))
                 }
               />
@@ -124,8 +120,8 @@ const Account = () => {
                 value={username}
                 onChange={(e) =>
                   setAccountData((prevAccountData) => ({
-                    ...prevAccountData, // Spread the previous state
-                    username: e.target.value, // Update only the firstname property
+                    ...prevAccountData, 
+                    username: e.target.value,
                   }))
                 }
                 className="usernameInput"
@@ -165,16 +161,6 @@ const Account = () => {
           </div>
         </div>
       )}
-      {/* <div>
-        <h1 className="bg-primary">Primary</h1>
-        <h1 className="bg-secondary">Secondary</h1>
-        <h1 className="bg-success">success</h1>
-        <h1 className="bg-info">info</h1>
-        <h1 className="bg-warning">warning</h1>
-        <h1 className="bg-danger">danger</h1>
-        <h1 className="bg-light">light</h1>
-        <h1 className="bg-dark text-light-emphasis">dark</h1>
-      </div> */}
     </div>
   );
 };

@@ -16,7 +16,6 @@ const OrdersOverview = () => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        console.log(response.data);
         setOrdersData(response.data); // Update the state with fetched data
       } catch (error) {
         console.error("Error fetching order data:", error);

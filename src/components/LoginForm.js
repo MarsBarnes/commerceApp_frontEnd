@@ -17,8 +17,6 @@ const LoginForm = ({ setToken }) => {
       return;
     }
 
-    console.log("hi");
-
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/login`,
@@ -27,11 +25,9 @@ const LoginForm = ({ setToken }) => {
           password: password,
         }
       );
-      console.log(data);
       setToken(data.token);
-      // Successful login logic here (e.g., set authentication state)
+      // Successful login logic here (set authentication state)
       setErrorMessage("");
-      console.log("Login successful");
       navigate("/shop");
     } catch (error) {
       console.error(error);

@@ -12,7 +12,6 @@ const Shop = () => {
           `${process.env.REACT_APP_BACKEND_URL}/products`,
           {}
         );
-        console.log(response.data);
         setProductData(response.data); // Update the state with fetched data
       } catch (error) {
         console.error("Error fetching cart data:", error);

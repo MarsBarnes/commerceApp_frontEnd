@@ -67,7 +67,6 @@ const RegistrationForm = () => {
       setErrorMessage("");
       navigate("/login");
 
-      //  console.log("response firstname: " + response.data.firstname);
     } catch (error) {
       setErrorMessage(error.message);
       console.error("Error registering account data:", error);

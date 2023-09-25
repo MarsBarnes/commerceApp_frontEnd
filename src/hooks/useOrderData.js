@@ -14,7 +14,6 @@ export const useOrderData = (orderId) => {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        console.log(response.data);
         setOrderData(response.data); // Update the state with fetched data
       } catch (error) {
         console.error("Error fetching order data:", error);
