@@ -1,7 +1,7 @@
 # Sticker Shop
 
 ## Overview 
-Welcome to Sticker Shop, an e-commerce store where you can pretend to shop for your favorite stickers! This project is designed to showcase my skills as a software engineer and includes various features that allow users to interact with the online store. Please note that this online store, as it stands, does not currently process payments or engage in actual sales transactions. Instead, it serves as a demonstration of the code and technical skills I have developed for portfolio presentation.
+Welcome to Sticker Shop, an e-commerce store where you can pretend to shop for your favorite stickers! This project is designed to showcase my skills as a software engineer and includes various features that allow users to interact with the online store. Please note that this online store, as it stands, does not currently process payments or engage in actual sales transactions. Instead, it serves as a demonstration of the code and technical skills I have developed for portfolio presentation. The code for the frontend is located here in this repository. To see the backend repository visit: https://github.com/MarsBarnes/commerceApp_backEnd.
 
 ## Features
 - Account Registration and Editing: Users can create an account or edit their existing account information.
@@ -19,7 +19,7 @@ Welcome to Sticker Shop, an e-commerce store where you can pretend to shop for y
 - Backend: Developed using Node.js and Express.js, with data stored in a PostgreSQL database. The backend is hosted on Clever Cloud.
 
 ## Getting Started
-1. Online Access: Simply visit our website at https://bananascommerce.netlify.app/.
+1. Online Access: Simply visit the website at https://bananascommerce.netlify.app/.
 2. Local Installation:
     - Clone both the frontend repository (https://github.com/MarsBarnes/commerceApp_frontEnd) and the backend repository (https://github.com/MarsBarnes/commerceApp_backEnd) to your local machine.
     - For both the frontend and backend:
@@ -29,4 +29,4 @@ Welcome to Sticker Shop, an e-commerce store where you can pretend to shop for y
     - Start the frontend server: npm start
 
 ## Future Enhancements
-In future iterations of this project, we plan to implement a secure payment processing system to complete the shopping experience. Stay tuned for updates! Feel free to explore Sticker Shop and happy pretend shopping! 
+In future iterations of this project, I plan to implement a secure payment processing system to complete the shopping experience. Stay tuned for updates! Feel free to explore Sticker Shop and happy pretend shopping! 
