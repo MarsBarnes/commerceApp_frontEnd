@@ -68,6 +68,10 @@ button {
   max-width: 1000px;
 }
 
+.add-margin-top {
+  margin: 25px;
+}
+
 .checkout_button{
   margin-bottom: 10px;
   text-align: center;

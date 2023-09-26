@@ -75,8 +75,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className="registration-form">
-      <h2 className="login"> Sign Up</h2>
+    <div className="registration-form add-margin-top">
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={HandleRegistration} className="form bg-success">
         <div className="form-group">

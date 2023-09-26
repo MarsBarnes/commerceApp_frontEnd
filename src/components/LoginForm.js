@@ -36,8 +36,7 @@ const LoginForm = ({ setToken }) => {
   };
 
   return (
-    <div className="login-form">
-      <h2 className="center">Login</h2>
+    <div className="login-form add-margin-top">
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleLogin} className="form bg-success">
         <div className="form-group">
