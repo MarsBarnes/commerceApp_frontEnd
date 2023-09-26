@@ -2,6 +2,8 @@ import { useContext } from "react";
 import dino from "../images/sticker.jpg";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ShopProduct = ({ i, index }) => {
   const token = useContext(TokenContext);
@@ -20,11 +22,11 @@ export const ShopProduct = ({ i, index }) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    alert(data.msg);
+    toast(data.msg);
   };
 
   const handleCartClickWhenLoggedOut = async () => {
-    alert("Login to add items to your cart.");
+    toast("Login to add items to your cart.");
   };
 
   return (

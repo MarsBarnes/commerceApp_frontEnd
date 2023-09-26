@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -60,8 +62,7 @@ const RegistrationForm = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      // alert for account created successfully
-      alert(
+      toast(
         "Account created Successfully. Login with your new username and password."
       );
       setErrorMessage("");

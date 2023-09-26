@@ -12,6 +12,8 @@ import LinkButtons from "./components/LinkButtons";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { TokenContext } from "./contexts/TokenContext";
 import { Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [token, setToken] = useState(localStorage.token || "");
@@ -27,7 +29,8 @@ function App() {
     <div className="App">
       <TokenContext.Provider value={token}>
         <Router>
-          <LinkButtons/>
+          <LinkButtons />
+          <ToastContainer />
           <Nav logout={logout}></Nav>
           <Routes>
             <Route path="/" element={<Navigate to="/shop" />} />

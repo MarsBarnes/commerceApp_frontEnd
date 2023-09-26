@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { CartProduct } from "./CartProduct";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
   const token = useContext(TokenContext);
@@ -55,7 +57,7 @@ const Cart = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      alert("Your order was successfully placed");
+      toast("Your order was successfully placed");
       setCartData([]);
     } catch (error) {
       console.error("Error Checking Out:", error);
