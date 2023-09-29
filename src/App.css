@@ -166,7 +166,7 @@ main {
   }
   .linkButtonDiv {
     height: 20vh;
-    background-color: red;
+    /* background-color: red; */
   }
   .navbar {
     width: 1200px;
