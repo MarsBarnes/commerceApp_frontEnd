@@ -6,7 +6,7 @@ import { FormatDate } from "./FormatDate";
 export const OrderSummary = ({ i, index }) => {
 
   return (
-    <div className="card mb-3 .h-100 bg-success" key={i.id}>
+    <div className="card bg-success" key={i.id}>
       <div className="row g-0">
         <div className="">
           <div className="card-body">

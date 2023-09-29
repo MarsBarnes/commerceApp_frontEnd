@@ -1,6 +1,6 @@
 function LinkButtons () {
     return (
-      <div className="flex">
+      <div className="flex linkButtonDiv">
         <a
           href="https://marsbarnes.github.io/Portfolio/"
           className="btn btn-primary linkButtons"

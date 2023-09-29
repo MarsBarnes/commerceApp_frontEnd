@@ -65,7 +65,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="shop-width">
+    <div className="left-right-margin">
       <div className="grid">
         {cartData && cartData.length > 0 ? (
           cartData.map((i, index) => (

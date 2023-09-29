@@ -23,6 +23,8 @@ function App() {
     setToken(token);
   };
 
+  document.body.dataset.bsTheme = "dark";
+
   const logout = () => saveToken("");
 
   return (
@@ -31,17 +33,24 @@ function App() {
         <Router>
           <LinkButtons />
           <ToastContainer />
-          <Nav logout={logout}></Nav>
-          <Routes>
-            <Route path="/" element={<Navigate to="/shop" />} />
-            <Route path="/login" element={<LoginForm setToken={saveToken} />} />
-            <Route path="/register" element={<RegistrationForm />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/orders" element={<OrdersOverview />} />
-            <Route path="/order/:orderId" element={<Order />} />
-          </Routes>
+          <div className="pages">
+            <Nav logout={logout}></Nav>
+            <main>
+              <Routes>
+                <Route path="/" element={<Navigate to="/shop" />} />
+                <Route
+                  path="/login"
+                  element={<LoginForm setToken={saveToken} />}
+                />
+                <Route path="/register" element={<RegistrationForm />} />
+                <Route path="/account" element={<Account />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/orders" element={<OrdersOverview />} />
+                <Route path="/order/:orderId" element={<Order />} />
+              </Routes>
+            </main>
+          </div>
         </Router>
       </TokenContext.Provider>
     </div>

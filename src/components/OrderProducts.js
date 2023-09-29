@@ -1,20 +1,18 @@
 import React from "react";
 import dino from "../images/sticker.jpg";
 
-
 export const OrderProducts = ({ i, index }) => {
-
   return (
-    <div className="card mb-3 .h-100 bg-success" key={i.product_id}>
+    <div className="card bg-success" key={i.product_id}>
       <div className="row g-0">
-        <div className="col-md-4">
+        <div className="col-md-5">
           <img
-            className="h-100 product_img img-fluid rounded-start"
+            className="product_img img-fluid rounded-start"
             src={dino}
             alt="..."
           />
         </div>
-        <div className="col-md-8">
+        <div className="col-md-7">
           <div className="card-body">
             <h5 className="card-title">{i.product_name}</h5>
             <p className="card-text">{i.product_description}</p>

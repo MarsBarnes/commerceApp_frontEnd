@@ -26,16 +26,14 @@ const OrdersOverview = () => {
   }, [token]);
 
   return (
-    <div className="shop-width">
-      <div className="grid">
-        {ordersData && ordersData.length > 0 ? (
-          ordersData.map((i, index) => (
-            <OrderSummary i={i} index={index} key={i.product_id} />
-          ))
-        ) : (
-          <p>You haven't made any orders yet.</p>
-        )}
-      </div>
+    <div className="grid">
+      {ordersData && ordersData.length > 0 ? (
+        ordersData.map((i, index) => (
+          <OrderSummary i={i} index={index} key={i.product_id} />
+        ))
+      ) : (
+        <p>You haven't made any orders yet.</p>
+      )}
     </div>
   );
 };

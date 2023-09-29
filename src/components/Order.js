@@ -10,8 +10,8 @@ const Order = () => {
   const orderData = useOrderData(i.orderId);
 
   return (
-    <div className="shop-width">
-      <div className="grid">
+    <div className="left-right-margin">
+      <div className="container">
         <div className="card mb-3 .h-100 bg-success" key={i.id}>
           <div className="row g-0">
             <div className="">
@@ -25,18 +25,20 @@ const Order = () => {
             </div>
           </div>
         </div>
-        {/* change orderData to an array of product data */}
-        {orderData && orderData.length > 0 ? (
-          orderData.map((orderItem, index) => (
-            <OrderProducts
-              i={orderItem}
-              index={index}
-              key={orderItem.product_id}
-            />
-          ))
-        ) : (
-          <p>You haven't made any orders yet.</p>
-        )}
+        <div className="grid">
+          {/* change orderData to an array of product data */}
+          {orderData && orderData.length > 0 ? (
+            orderData.map((orderItem, index) => (
+              <OrderProducts
+                i={orderItem}
+                index={index}
+                key={orderItem.product_id}
+              />
+            ))
+          ) : (
+            <p>You haven't made any orders yet.</p>
+          )}
+        </div>
       </div>
     </div>
   );
