@@ -34,34 +34,16 @@ button {
   height: 370px;
   justify-content: center;
 }
-.registration-form {
-  /* display: grid;
-  align-items: center;
-  justify-content: center; */
-}
-
-.login-form {
-  /* display: grid; */
-  /* align-items: center;
-  justify-content: center; */
-}
 
 .center {
   text-align: center;
 }
 
 /* Shop Feed Product Styles Below: */
-.product {
-  /* margin: 10px; */
-  /* padding: 10px; */
-}
 .product_name {
   font-size: large;
   font-weight: bold;
 }
-/* .product_img {
-  max-height: 300px;
-} */
 
 .grid {
   display: grid;
@@ -74,10 +56,6 @@ button {
   /* margin: 25px; */
   max-width: 1200px;
   justify-content: center;
-}
-
-.add-margin-top {
-  /* margin: 25px; */
 }
 
 .checkout_button {
@@ -105,10 +83,6 @@ button {
 /* link buttons */
 .flex {
   display: flex;
-}
-
-.linkButtonDiv {
-  /* height: 7vh; */
 }
 
 .linkButtons {
@@ -148,10 +122,6 @@ main {
   main {
     /* max-width: 1200px; */
     min-height: 80vh;
-  }
-  .linkButtonDiv {
-    /* height: 20vh; */
-    /* background-color: red; */
   }
   .navbar {
     width: 1200px;
