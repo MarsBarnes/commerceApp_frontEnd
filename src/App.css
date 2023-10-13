@@ -119,12 +119,27 @@ main {
     display: block !important;}
 
 @media screen and (max-width: 749px) {
+
+
+  .App {
+    width: 100vw;
+  }
+  .pages {
+    width: 100vw;
+  }
   main {
     /* max-width: 1200px; */
-    min-height: 80vh;
+    min-height: 80vh;    
+  }
+  .flex {
+    flex-direction: column;
+  }
+
+  .linkButtons{
+    margin: 5px;
   }
   .navbar {
-    width: 1200px;
+    width: 100vw;
     height: 10vh;
     border-radius: 5px 5px 0 0;
   }
