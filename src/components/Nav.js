@@ -2,12 +2,20 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
+import * as bootstrap from "bootstrap";
 
 function Navbar({ logout }) {
   const token = useContext(TokenContext);
   const loggedIn = token !== "";
 
+  function collapseNav() {
+    const el = document.getElementById("navbarSupportedContent");
+    const bs = new bootstrap.Collapse(el);
+    bs.hide();
+  }
+
   async function handleLogout() {
+    collapseNav()
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`, null, {
         headers: {
@@ -20,6 +28,8 @@ function Navbar({ logout }) {
       console.error("error occured");
     }
   }
+
+
 
   return (
     <div>
@@ -46,31 +56,47 @@ function Navbar({ logout }) {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <button
-                    type="button"
+                  <NavLink
                     className="nav-link"
+                    to="/shop"
                     onClick={handleLogout}
                   >
                     Logout
-                  </button>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/account">
+                  <NavLink
+                    className="nav-link"
+                    to="/account"
+                    onClick={collapseNav}
+                  >
                     Account
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/orders">
+                  <NavLink
+                    className="nav-link"
+                    to="/orders"
+                    onClick={collapseNav}
+                  >
                     Orders
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/shop">
+                  <NavLink
+                    className="nav-link"
+                    to="/shop"
+                    onClick={collapseNav}
+                  >
                     Shop
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/cart">
+                  <NavLink
+                    className="nav-link"
+                    to="/cart"
+                    onClick={collapseNav}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -110,17 +136,30 @@ function Navbar({ logout }) {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <NavLink className="nav-link" aria-current="page" to="/login">
+                  <NavLink
+                    className="nav-link"
+                    aria-current="page"
+                    to="/login"
+                    onClick={collapseNav}
+                  >
                     Login
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/register">
+                  <NavLink
+                    className="nav-link"
+                    to="/register"
+                    onClick={collapseNav}
+                  >
                     Register
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/shop">
+                  <NavLink
+                    className="nav-link"
+                    to="/shop"
+                    onClick={collapseNav}
+                  >
                     Shop
                   </NavLink>
                 </li>
