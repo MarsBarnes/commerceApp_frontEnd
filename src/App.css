@@ -89,6 +89,10 @@ button {
   margin: 10px;
 }
 
+.shortLinks {
+  display: none;
+}
+
 /* nav */
 .navbar {
   width: 1200px;
@@ -109,18 +113,16 @@ main {
   min-height: 86vh;
   margin-bottom: 20px;
   display: grid;
-    justify-items: center;
+  justify-items: center;
 }
 
-
-.left-right-margin{
+.left-right-margin {
   /* margin-left: 20%;
   margin-right: 20%; */
-    display: block !important;}
+  display: block !important;
+}
 
 @media screen and (max-width: 749px) {
-
-
   .App {
     width: 100vw;
   }
@@ -128,14 +130,9 @@ main {
     width: 100vw;
   }
   main {
-    /* max-width: 1200px; */
-    min-height: 80vh;    
+    min-height: 80vh;
   }
-  .flex {
-    flex-direction: column;
-  }
-
-  .linkButtons{
+  .linkButtons {
     margin: 5px;
   }
   .navbar {
@@ -143,16 +140,19 @@ main {
     height: 100%;
     border-radius: 5px 5px 0 0;
   }
-
-  .shop-width{
+  .shop-width {
     width: 90%;
     display: grid;
-    
   }
   .nav-item {
     display: flex;
     justify-content: center;
-
-}
-
+  }
+  .longLinks {
+    display: none;
+  }
+  .shortLinks {
+    display: flex;
+    justify-content: space-between;
+  }
 }
