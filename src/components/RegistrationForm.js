@@ -127,7 +127,7 @@ const RegistrationForm = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             className="e"
-            minlength="8"
+            minLength="8"
           />
         </div>
         <button className="btn btn-primary">Register</button>

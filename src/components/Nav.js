@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-// import DarkModeToggle from "./DarkModeToggle";
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
 
@@ -87,7 +86,6 @@ function Navbar({ logout }) {
               </ul>
             </div>
           </div>
-          {/* <DarkModeToggle /> */}
         </nav>
       ) : (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -129,7 +127,6 @@ function Navbar({ logout }) {
               </ul>
             </div>
           </div>
-          {/* <DarkModeToggle /> */}
         </nav>
       )}
     </div>

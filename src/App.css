@@ -92,7 +92,7 @@ button {
 /* nav */
 .navbar {
   width: 1200px;
-  height: 7vh;
+  height: 100%;
   border-radius: 5px 5px 0 0;
 }
 .pages {
@@ -140,7 +140,7 @@ main {
   }
   .navbar {
     width: 100vw;
-    height: 10vh;
+    height: 100%;
     border-radius: 5px 5px 0 0;
   }
 
@@ -149,4 +149,10 @@ main {
     display: grid;
     
   }
+  .nav-item {
+    display: flex;
+    justify-content: center;
+
+}
+
 }
