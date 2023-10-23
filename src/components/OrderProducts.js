@@ -1,15 +1,14 @@
 import React from "react";
-import dino from "../images/sticker.jpg";
+import { StickerImage } from "./StickerImage";
 
 export const OrderProducts = ({ i, index }) => {
   return (
     <div className="card bg-success" key={i.product_id}>
       <div className="row g-0">
         <div className="col-md-5">
-          <img
-            className="product_img img-fluid rounded-start"
-            src={dino}
-            alt="..."
+          <StickerImage
+            uuid={i.product_id}
+            className={"product_img img-fluid rounded-start"}
           />
         </div>
         <div className="col-md-7">

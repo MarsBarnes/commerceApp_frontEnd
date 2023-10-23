@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import dino from "../images/sticker.jpg";
+
 import { TokenContext } from "../contexts/TokenContext";
 import axios from "../api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { StickerImage } from "./StickerImage";
 
 export const ShopProduct = ({ i, index }) => {
   const token = useContext(TokenContext);
@@ -32,7 +33,7 @@ export const ShopProduct = ({ i, index }) => {
   return (
     <div className="col">
       <div className="card bg-success h-100" key={i.id}>
-        <img className="product_img card-img-top" src={dino} alt="Dino"></img>
+        <StickerImage uuid={i.id} className="product_img card-img-top" />
 
         <div className="card-body d-flex flex-column">
           <h5 className="card-title">{i.product_name}</h5>
