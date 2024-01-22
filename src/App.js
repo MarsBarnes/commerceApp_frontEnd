@@ -31,7 +31,7 @@ function App() {
     <div className="App">
       <TokenContext.Provider value={token}>
         <Router>
-          <LinkButtons />
+          {/* <LinkButtons /> */}
           <ToastContainer />
           <div className="pages">
             <Nav logout={logout}></Nav>
