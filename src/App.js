@@ -8,7 +8,7 @@ import Cart from "./components/Cart";
 import Shop from "./components/Shop";
 import OrdersOverview from "./components/OrdersOverview";
 import Order from "./components/Order";
-import LinkButtons from "./components/LinkButtons";
+// import LinkButtons from "./components/LinkButtons";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { TokenContext } from "./contexts/TokenContext";
 import { Navigate } from "react-router-dom";
