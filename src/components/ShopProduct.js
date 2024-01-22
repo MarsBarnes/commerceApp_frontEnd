@@ -31,7 +31,7 @@ export const ShopProduct = ({ i, index }) => {
   };
 
   return (
-    <div className="col">
+    <div className="col d-flex justify-content-center">
       <div className="card bg-success h-100" key={i.id}>
         <StickerImage uuid={i.id} className="product_img card-img-top" />
 

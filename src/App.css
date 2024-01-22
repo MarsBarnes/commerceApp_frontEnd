@@ -6,6 +6,7 @@
   /* width: 100vw; */
   margin: auto;
   min-height: 101vh;
+  justify-content: center;
 }
 
 img {
