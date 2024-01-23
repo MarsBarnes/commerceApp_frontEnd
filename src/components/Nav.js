@@ -9,13 +9,15 @@ function Navbar({ logout }) {
   const loggedIn = token !== "";
 
   function collapseNav() {
-    const el = document.getElementById("navbarSupportedContent");
-    const bs = new bootstrap.Collapse(el);
-    bs.hide();
+    if (document.querySelector(".App").clientWidth <= 992) {
+      const el = document.getElementById("navbarSupportedContent");
+      const bs = new bootstrap.Collapse(el);
+      bs.hide();
+    }
   }
 
   async function handleLogout() {
-    collapseNav()
+    collapseNav();
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`, null, {
         headers: {
@@ -28,8 +30,6 @@ function Navbar({ logout }) {
       console.error("error occured");
     }
   }
-
-
 
   return (
     <div>
